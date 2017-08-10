@@ -1,0 +1,214 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    background-color: #EAEAEA;
+}
+
+.hide{
+    display:none;
+}
+
+.ml-5 {
+    margin-left: 5px;
+}
+
+.ml-10 {
+    margin-left: 10px;
+}
+
+.ml-15 {
+    margin-left: 15px;
+}
+
+.ml-20 {
+    margin-left: 20px;
+}
+
+.ml-25 {
+    margin-left: 25px;
+}
+
+.ml-30 {
+    margin-left: 30px;
+}
+
+.ml-35 {
+    margin-left: 35px;
+}
+
+.ml-40 {
+    margin-left: 40px;
+}
+
+.mt-5 {
+    margin-top: 5px;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.mt-15 {
+    margin-top: 15px;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mt-25 {
+    margin-top: 25px;
+}
+
+.mt-30 {
+    margin-top: 30px;
+}
+
+.mt-35 {
+    margin-top: 35px;
+}
+
+.mt-40 {
+    margin-top: 40px;
+}
+
+.mb-5 {
+    margin-bottom: 5px;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+.mb-15 {
+    margin-bottom: 15px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.mb-25 {
+    margin-bottom: 25px;
+}
+
+.mb-30 {
+    margin-bottom: 30px;
+}
+
+.mb-35 {
+    margin-bottom: 35px;
+}
+
+.mb-40 {
+    margin-bottom: 40px;
+}
+
+.top-tip {
+    width: 100%;
+    background-color: #F9F9F9;
+    color: #666666;
+    font-size: 10px;
+    height: 30px;
+    vertical-align: middle;
+    line-height: 30px;
+}
+
+.top-tip-content {
+    width: 1200px;
+    margin: 0px auto;
+}
+
+.top-tip-left {
+    float: left;
+}
+
+.top-tip-right {
+    float: right;
+}
+
+.top-tip-operator {
+    color: rgb(113, 198, 163);
+    cursor: pointer;
+}
+
+.top-title {
+    width: 100%;
+    background-color: #FFFFFF;
+    color: #666666;
+    font-size: 20px;
+    height: 80px;
+    vertical-align: middle;
+    line-height: 80px;
+}
+
+.top-title-content {
+    width: 1200px;
+    margin: 0px auto;
+    cursor: pointer;
+}
+
+.top-title-logo {
+    width: 310px;
+    float: left;
+    height: 80px;
+}
+
+.top-title-menus div:hover {
+    color: #FF721F;
+}
+
+.top-title-menus div {
+    width: 100px;
+    height: 80px;
+    line-height: 80px;
+    float: left;
+}
+
+.top-title-person-center {
+    float: right;
+}
+
+.top-title-person-center-btn {
+    height: 30px;
+    width: 110px;
+    background-color: #F7F7F7;
+    border: 1px solid #CDCDCD;
+    color: #A0A0A0;
+    border-radius: 3px;
+    outline:none;
+}
+
+.top-title-person-center-btn:active{
+    box-shadow:inset 0 0 2px 2px #ccc;
+}
+
+.selected-menu{
+    color:#FF721F;
+    border-bottom: 3px solid #FF721F;
+}
+
+.f-left {
+    float: left;
+}
+
+.f-right {
+    float: right;
+}
+
+.lihh-clear {
+    clear: both;
+}
+
+input[type=button]{
+    cursor: pointer;
+}
+
+.lhh-c-black{
+    color:black;
+}
+
+.lhh-c-ori{
+    color:orangered;
+}
