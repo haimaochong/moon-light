@@ -44,9 +44,9 @@ public class PlatFormInfoEntity extends BaseId implements Serializable {
 
 	private BigDecimal maxInvestAccount;
 
-	private String investCycle;
+	private Boolean isInvestCycle;
 
-	private ReturnMoneyType type;
+	private ReturnMoneyType returnMoneyType;
 
 	private String desc;
 
@@ -92,20 +92,20 @@ public class PlatFormInfoEntity extends BaseId implements Serializable {
 		this.maxInvestAccount = maxInvestAccount;
 	}
 
-	public String getInvestCycle() {
-		return investCycle;
+	public Boolean getIsInvestCycle() {
+		return isInvestCycle;
 	}
 
-	public void setInvestCycle(String investCycle) {
-		this.investCycle = investCycle;
+	public void setIsInvestCycle(Boolean isInvestCycle) {
+		this.isInvestCycle = isInvestCycle;
 	}
 
-	public ReturnMoneyType getType() {
-		return type;
+	public ReturnMoneyType getReturnMoneyType() {
+		return returnMoneyType;
 	}
 
-	public void setType(ReturnMoneyType type) {
-		this.type = type;
+	public void setReturnMoneyType(ReturnMoneyType returnMoneyType) {
+		this.returnMoneyType = returnMoneyType;
 	}
 
 	public String getDesc() {
