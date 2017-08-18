@@ -27,6 +27,8 @@ public class UserInfoEntity extends BaseId implements Serializable {
 	 */
 	private static final long serialVersionUID = 7578274789825018704L;
 
+	private String loginName;
+
 	private String userName;
 
 	private String password;
@@ -42,6 +44,14 @@ public class UserInfoEntity extends BaseId implements Serializable {
 	private String accountForWX;
 
 	private PayType payType;
+
+	public String getLoginName() {
+		return loginName;
+	}
+
+	public void setLoginName(String loginName) {
+		this.loginName = loginName;
+	}
 
 	public String getUserName() {
 		return userName;

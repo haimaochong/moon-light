@@ -3,6 +3,7 @@ package com.light.moon.utils;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -10,6 +11,7 @@ import org.springframework.data.domain.Sort;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.light.moon.searcher.WebSearchFilter;
 
 /**
  * 列表查询常用工具
@@ -85,6 +87,11 @@ public class GridUtils {
 		return jsonMapper.toJson(result);
 	}
 
+	/**
+	 * 转换翻页数据为map
+	 * @param page
+	 * @return
+	 */
 	private static Map<String, Object> dealPageInfo(Page<?> page) {
 		Map<String, Object> result = Maps.newHashMap();
 		if (null == page) {
@@ -98,5 +105,36 @@ public class GridUtils {
 		result.put(CURRENT_PAGE, page.getNumber() + 1);
 		return result;
 	}
+	
+	/**
+     * 用于字符串的查询条件增加，非空时，向filters增加查询条件
+     *
+     * @param filters
+     * @param field
+     * @param operator
+     * @param value
+     */
+    public static void addSearchFilterNotBlank(List<WebSearchFilter> filters, String field,
+                                               WebSearchFilter.Operator operator, String value) {
+        if (StringUtils.isNotBlank(value)) {
+            filters.add(new WebSearchFilter(field, operator, value));
+        }
+    }
 
+    /**
+     * 用于查询条件的增加，不为null时，增加查询条件
+     *
+     * @param filters
+     * @param field
+     * @param operator
+     * @param value
+     */
+    public static void addSearchFilterNotNull(List<WebSearchFilter> filters, String field,
+                                              WebSearchFilter.Operator operator, Object value) {
+        // 由于前段传回的条件有可能为字符串类型，且为""，因此此处增加对""的判断
+        if (null != value && !"".equals(value)) {
+            filters.add(new WebSearchFilter(field, operator, value));
+        }
+    }
+	
 }

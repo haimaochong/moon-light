@@ -19,5 +19,7 @@
 	<jpa:repositories base-package="com.light.*.**.dao"
 		repository-impl-postfix="Impl" entity-manager-factory-ref="entityManagerFactory"
 		transaction-manager-ref="transactionManager" />
+		
+	<bean id="SpringContextHolder" class="com.light.moon.utils.SpringContextHolder" />
 
 </beans>
