@@ -1,0 +1,148 @@
+.center-table{
+    width: 1200px;
+    min-height: 600px;
+    background-color: white;
+    margin: auto;
+    text-align: center;
+    border: 0px;
+    border-collapse:collapse;
+}
+
+.center-left{
+    padding: 0px;
+    width: 240px;
+    border: 0px;
+}
+
+.center-split{
+    width: 60px;
+    background-image: url("/assets/images/book-split.png");
+}
+
+.center-right{
+    padding: 0px;
+    border: 0px;
+}
+
+.person-ico{
+    height:210px;
+    font-size: 14px;
+}
+
+.center-split2{
+    background-color: #EAEAEA;
+    height: 20px;
+    width: 342px;
+    padding: 0px;
+}
+
+.blank-div{
+    height:20px;
+    width:31px;
+    background-color: white;
+    margin-left: 315px;
+}
+
+.person-ico div{
+    width: 100%;
+    text-align: left;
+}
+
+.person-label{
+    color: #666666;
+    margin-left: 40px;
+    font-family: 微软雅黑;
+}
+
+.person-item{
+    font-weight: bold;
+}
+
+.person-img{
+    width:120px;
+    height: 120px;
+}
+
+.operate-menus{
+    text-align: left;
+    vertical-align: top;
+    padding-top: 40px;
+    padding-left: 40px;
+    font-size: 20px;
+    font-family: 微软雅黑;
+}
+
+.operate-menu{
+    width: 200px;
+    text-align: center;
+    padding-top: 30px;
+    height: 30px;
+    border-bottom: 1px dashed black;
+    cursor: pointer;
+}
+
+.choose-menu{
+    color: #FF723F;
+    border-bottom: 2px solid #FF723F;
+}
+
+.base-form-div{
+    width:700px;
+    height: 600px;
+}
+
+.base-form-table{
+    width: 600px;
+    margin: auto;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.base-form-label{
+    text-align: right;
+    width: 20%;
+    height: 40px;
+}
+
+.base-form-item{
+    width: 30%;
+    text-align: left;
+}
+
+.base-form-title{
+    border-bottom: 2px solid #FF723F;
+    text-align: left;
+    padding-left: 20px;
+    padding-bottom: 5px;
+    margin-top: 60px;
+    font-weight: bold;
+}
+
+.base-form-submit-div{
+    width:700px;
+    margin-top: 60px;
+}
+
+.submit-btn {
+    width: 60px;
+    height: 25px;
+    font-size: 14px;
+    color:white;
+    border: 0px;
+    background-color: orangered;
+    border-radius: 5px;
+    outline:none;
+    margin-bottom: 40px;
+}
+
+.reset-btn {
+    width: 60px;
+    height: 25px;
+    font-size: 14px;
+    color:orangered;
+    border: 1px solid #AAAAAA;
+    background-color: white;
+    border-radius: 5px;
+    outline:none;
+    margin-bottom: 40px;
+}

@@ -4,6 +4,7 @@
 <%@ include file="taglibs.jsp"%>
 
 <link href="${mimeBase}/styles/lib.css" rel="stylesheet" type="text/css" />
+<link href="${mimeBase}/styles/jquery-ui.min.css" rel="stylesheet" type="text/css" />
 
 <script src="${vendorsBase}/require.js?version=${version}"></script>
 <script language="javascript">

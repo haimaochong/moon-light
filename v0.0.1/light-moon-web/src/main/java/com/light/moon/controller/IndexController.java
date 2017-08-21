@@ -38,7 +38,7 @@ public class IndexController {
 
 		model.put("platformList", Lists.newLinkedList(iterator));
 		model.put("returnMoneyType", ReturnMoneyType.values());
-		return "/index";
+		return "index/index";
 	}
 
 	@RequestMapping(value = "/queryPlatformList", method = RequestMethod.POST)

@@ -25,9 +25,6 @@ require(['jquery'], function ($) {
             }
             $(".search-result-items").html(contentHtml);
         }, initEvent = function () {
-            $(".top-title-menus div").click(function () {
-                $(this).addClass("selected-menu").siblings("div").removeClass("selected-menu");
-            });
             $(".search-order-type li").click(function () {
                 $(this).addClass("selected-menu").siblings("li").removeClass("selected-menu");
             });

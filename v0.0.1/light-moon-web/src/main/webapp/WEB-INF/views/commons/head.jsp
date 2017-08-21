@@ -10,20 +10,4 @@
                 </span>
         </div>
     </div>
-    <div class="top-title">
-        <div class="top-title-content">
-            <div class="top-title-logo"></div>
-            <div class="top-title-menus">
-                <div class="top-title-menus-home selected-menu">首页</div>
-                <div class="top-title-menus-steady">稳健专区</div>
-                <div class="top-title-menus-hight">高返专区</div>
-                <div class="top-title-menus-second">复投专区</div>
-                <div class="top-title-menus-guide">新手指引</div>
-                <div class="top-title-menus-relation">联系我们</div>
-            </div>
-            <div class="top-title-person-center">
-                <input class="top-title-person-center-btn" type="button" value="个人中心">
-            </div>
-        </div>
-    </div>
 </div>
