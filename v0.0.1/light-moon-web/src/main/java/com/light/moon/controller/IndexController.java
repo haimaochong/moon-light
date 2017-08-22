@@ -46,7 +46,7 @@ public class IndexController {
 	public String queryPlatformList(QueryPlatformParams params) {
 
 		Pageable pageable = GridUtils.buildPageable(params.getPageIndex(), params.getPageSize(),
-				new Sort(Direction.DESC, params.getOrderBy()));
+				new Sort(Direction.DESC, "createTime"));
 		Specification<PlatFormInfoEntity> filter = DynamicSpecifications.bySearchFilter(PlatFormInfoEntity.class, toFilter(params));
 		
 		Page<PlatFormInfoEntity> page = platformInfoService.findAll(filter, pageable);

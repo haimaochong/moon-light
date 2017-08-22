@@ -1,4 +1,5 @@
 <%@ page language="java" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div class="lhh-search">
     <div class="search-title">
         <div class="f-left">全部分类</div>
@@ -13,25 +14,12 @@
             <div class="search-all-div f-left"><div class="search-menu search-selected-menu">不限</div></div>
             <div class="search-content-div f-left">
                 <ul>
-                    <li><div class="search-menu">恒利网</div></li>
-                    <li><div class="search-menu">学信贷</div></li>
-                    <li><div class="search-menu">学信贷</div></li>
-                    <li><div class="search-menu">学信贷</div></li>
-                    <li><div class="search-menu">学信贷</div></li>
-                    <li><div class="search-menu">学信贷</div></li>
-                    <li><div class="search-menu">学信贷</div></li>
-                </ul>
-                <ul>
-                    <li><div class="search-menu">学信贷</div></li>
-                    <li><div class="search-menu">学信贷</div></li>
-                    <li><div class="search-menu">学信贷</div></li>
-                    <li><div class="search-menu">学信贷</div></li>
-                    <li><div class="search-menu">学信贷</div></li>
-                    <li><div class="search-menu">学信贷</div></li>
-                    <li><div class="search-menu">学信贷</div></li>
-                    <li><div class="search-menu">学信贷</div></li>
-                    <li><div class="search-menu">学信贷</div></li>
-                    <li><div class="search-menu">学信贷</div></li>
+                	<c:forEach items="${platformList}" var="item" varStatus="status">
+                		<c:if test="${status.index%7==0 && !status.last }">
+                			</ul><ul>
+                		</c:if>
+	                    <li><div class="search-menu">${item.name}</div></li>
+                	</c:forEach>
                 </ul>
             </div>
         </div>

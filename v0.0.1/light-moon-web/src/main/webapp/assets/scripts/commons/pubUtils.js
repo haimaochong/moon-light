@@ -35,7 +35,6 @@
 		        
 		        var appendHTML = _page.initPageModel(conf.total, conf.page);
 		        $("#" + conf.pageId).html(appendHTML);
-		        conf.callBack(page, conf.pageSize);
 			},
 			initPageModel:function(pageCount, currentPage) {
 				var conf = _page._conf;
@@ -53,8 +52,8 @@
 		        }
 		        
 		        var appendStr = "";
-		        appendStr += "<li class='" + prePageClass + "' page-data='1' page-rel='firstpage'>首页</li>";
-		        appendStr += "<li class='" + prePageClass + "' page-data='" + prePage + "' page-rel='prepage'>&lt;上一页</li>";
+		        appendStr += "<li class='" + prePageClass + "' page-data='1' onselectstart='return false' page-rel='firstpage'>首页</li>";
+		        appendStr += "<li class='" + prePageClass + "' page-data='" + prePage + "' onselectstart='return false' page-rel='prepage'>&lt;上一页</li>";
 		        var minPageNumber = 1;
 		        if(currentPage - parseInt(conf.maxShowPage / 2) > 0 && currentPage + parseInt(conf.maxShowPage / 2) <= pageCount){
 		            minPageNumber = currentPage - parseInt(conf.maxShowPage / 2);
@@ -74,10 +73,10 @@
 		            if(pageNumber == currentPage){
 		                itemPageClass = "pageItemActive";
 		            }
-		            appendStr+="<li class='" + itemPageClass + "' page-data='" + pageNumber + "' page-rel='itempage'>" + pageNumber + "</li>";
+		            appendStr+="<li class='" + itemPageClass + "' page-data='" + pageNumber + "' onselectstart='return false' page-rel='itempage'>" + pageNumber + "</li>";
 		        }
-		        appendStr += "<li class='" + nextPageClass + "' page-data='" + nextPage + "' page-rel='nextpage'>下一页&gt;</li>";
-		        appendStr += "<li class='" + nextPageClass + "' page-data='" + pageCount + "' page-rel='lastpage'>尾页</li>";
+		        appendStr += "<li class='" + nextPageClass + "' page-data='" + nextPage + "' onselectstart='return false' page-rel='nextpage'>下一页&gt;</li>";
+		        appendStr += "<li class='" + nextPageClass + "' page-data='" + pageCount + "' onselectstart='return false' page-rel='lastpage'>尾页</li>";
 		        
 		        return appendStr;
 			},
@@ -85,6 +84,7 @@
 				var conf = _page._conf;
 				$(document).on("click", "#"+conf.pageId + ">li[class='pageItem']", function() {
 					_page.initPageComponent($(this).attr("page-data"));
+					conf.callBack(page, conf.pageSize);
 				});
 			}
 		};
