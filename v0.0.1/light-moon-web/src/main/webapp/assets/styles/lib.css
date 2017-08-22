@@ -246,3 +246,31 @@ input[type=button]{
     margin: 5px;
     background-color: #DDDDDD;
 }
+
+.moon-form ul li {
+	min-width:300px;
+	height:25px;
+	line-height:25px;
+	list-style: none;
+	float: left;
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+
+.moon-form ul li .t-label{
+	font-size:12px;
+	height:25px;
+	color:#999;
+	width:100px;
+	text-align:right;
+	margin-right:10px;
+	float: left;
+}
+
+.moon-form ul li .t-item{
+	width:180px;
+	height:25px;
+	display:block;
+	text-align:right;
+	float: left;
+}

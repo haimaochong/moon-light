@@ -24,12 +24,17 @@ var services = {
                 $(this).addClass("search-selected-menu");
             });
             $(".search-content-more div").click(function() {
-                $($(".search-content-div ul")[1]).slideToggle(500);
+            	if($(this).text() == "[更多]") {
+                	$(this).text("[收起]");
+                } else {
+                	$(this).text("[更多]");
+                }
+                $(".search-content-div ul:first").siblings("ul").slideToggle(500);
             });
             
             $(document).on("click", ".js-apply-btn", function() {
             	$("#dialog-confirm").dialog({
-            		width: 600,
+            		width: 450,
             		modal: true,
             		buttons: {
             			"登陆": function() {
@@ -81,13 +86,15 @@ var services = {
                     
                     PubUtils.initPage({
                 		"pageId":"page",
+                		"pageIndex":pageIndex,
                 		"total":data.total,
-                		callBack:function(pageIndex, pageSize) {
-                			search(pageIndex);
+                		callBack:function(page, pageSize) {
+                			search(page);
                 		}
                 	});
                 }
             });
+        	
         };
 
         return {

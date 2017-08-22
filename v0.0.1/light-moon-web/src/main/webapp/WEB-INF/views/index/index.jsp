@@ -5,8 +5,6 @@
     <%@ include file="../commons/resources.jsp"%>
     <link type="text/css" href="//g.alicdn.com/sd/ncpc/nc.css?t=1503384835379" rel="stylesheet"/>
     <link href="${mimeBase}/styles/index.css?version=${version}" rel="stylesheet" type="text/css" />
-	
-    
 </head>
 
 <body>
@@ -77,31 +75,33 @@
         </div>
     </div>
     
-    <div id="dialog-confirm" title="jquery ui演示弹出层" class="hide">
+    <div id="dialog-confirm" title="登录" class="hide">
     	<div id="_umfp" style="display:inline;width:1px;height:1px;overflow:hidden"></div>
-		<table>
-			<tr>
-				<td align="right">用户名/手机号码:</td>
-				<td><input class='ui-autocomplete-input' /></td>
-			</tr>
-			<tr>
-				<td align="right">登录密码:</td>
-				<td><input class='ui-autocomplete-input' /></td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<div class="ln">
-						<div id="dom_id"></div>
+    	<div class="moon-form">
+    		<ul>
+    			<li>
+    				<div class="t-label">用户名/手机号码</div>
+    				<div class="t-item"><input type="text" /></div>
+    			</li>
+    			<li>
+    				<div class="t-label">登录密码</div>
+    				<div class="t-item"><input type="password" /></div>
+    			</li>
+    			<li>
+    				<div class="t-label"> </div>
+    				<div class="t-item">
+	    				<div class="ln">
+							<div id="dom_id"></div>
+						</div>
+				
+						<input type='hidden' id='csessionid' name='csessionid'/>
+						<input type='hidden' id='sig' name='sig'/>
+						<input type='hidden' id='token' name='token'/>
+						<input type='hidden' id='scene' name='scene'/>
 					</div>
-			
-					<input type='hidden' id='csessionid' name='csessionid'/>
-					<input type='hidden' id='sig' name='sig'/>
-					<input type='hidden' id='token' name='token'/>
-					<input type='hidden' id='scene' name='scene'/>
-				</td>
-			</tr>
-		</table>
-		
+    			</li>
+    		</ul>
+    	</div>
 	</div>
 </body>
 

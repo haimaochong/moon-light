@@ -4,7 +4,6 @@
 <head>
     <%@ include file="../commons/resources.jsp"%>
     <link href="${mimeBase}/styles/apply.css" rel="stylesheet" type="text/css" />
-    <script src="${scripts}/apply/apply.js?version=${version}"></script>
 </head>
 
 <body>
@@ -52,4 +51,6 @@
         </div>
     </div>
 </body>
+
+<script src="${scripts}/apply/apply.js?version=${version}"></script>
 </html>

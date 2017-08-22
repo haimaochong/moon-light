@@ -1,5 +1,5 @@
 <%@ page language="java" pageEncoding="utf-8"%>
-<div class="lhh-top mb-20">
+<div class="lhh-top mb-10">
     <div class="top-tip">
         <div class="top-tip-content">
                 <span class="top-tip-left">

@@ -15,8 +15,8 @@
             <div class="search-content-div f-left">
                 <ul>
                 	<c:forEach items="${platformList}" var="item" varStatus="status">
-                		<c:if test="${status.index%7==0 && !status.last }">
-                			</ul><ul>
+                		<c:if test="${status.index != 0 && status.index%7==0 && !status.last }">
+                			</ul><ul class="allow-hide">
                 		</c:if>
 	                    <li><div class="search-menu">${item.name}</div></li>
                 	</c:forEach>
@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="search-content-more">
-            <div class="f-left">[更多]</div>
+            <div class="f-left">[收起]</div>
         </div>
         <div class="search-item">
             <div class="search-name-div f-left">平台背景 : </div>

@@ -13,7 +13,7 @@
 			init : function(conf) {
 				var t = _page;
 				t._conf = $.extend({}, t._default_conf, conf);
-				t.initPageComponent(t._conf.page);
+				t.initPageComponent(t._conf.pageIndex);
 				t._event();
 			},
 			_default_conf : {
@@ -82,9 +82,9 @@
 			},
 			_event:function() {
 				var conf = _page._conf;
-				$(document).on("click", "#"+conf.pageId + ">li[class='pageItem']", function() {
+				$(document).off("click", "#"+conf.pageId + ">li[class='pageItem']").on("click", "#"+conf.pageId + ">li[class='pageItem']", function() {
 					_page.initPageComponent($(this).attr("page-data"));
-					conf.callBack(page, conf.pageSize);
+					conf.callBack($(this).attr("page-data"), conf.pageSize);
 				});
 			}
 		};

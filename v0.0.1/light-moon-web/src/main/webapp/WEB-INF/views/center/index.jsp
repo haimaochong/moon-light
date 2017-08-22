@@ -4,7 +4,6 @@
 <head>
     <%@ include file="../commons/resources.jsp"%>
     <link href="${mimeBase}/styles/center.css" rel="stylesheet" type="text/css" />
-    <script src="${scripts}/center/center.js?version=${version}"></script>
 </head>
 
 <body>
@@ -91,4 +90,6 @@
         </tr>
     </table>
 </body>
+
+<script src="${scripts}/center/center.js?version=${version}"></script>
 </html>

@@ -43,7 +43,7 @@ public class GridUtils {
 	 * @return
 	 */
 	public static Pageable buildPageable(Integer pageNo, Integer pageSize, Sort sort) {
-		int defaultPageSize = 20;
+		int defaultPageSize = 10;
 		int defaultPageNo = 1;
 		if (null == pageNo || pageNo.intValue() <= 0) {
 			pageNo = defaultPageNo;

@@ -16,7 +16,7 @@
 
 .center-split{
     width: 60px;
-    background-image: url("/assets/images/book-split.png");
+    background-image: url("../images/book-split.png");
 }
 
 .center-right{

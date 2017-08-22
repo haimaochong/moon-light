@@ -1,4 +1,4 @@
-require(['jquery'], function ($) {
+(function ($) {
     var applyPage = function () {
         var init = function () {
             initEvent();
@@ -19,4 +19,4 @@ require(['jquery'], function ($) {
     };
 
     applyPage().init();
-});
+})(jQuery);

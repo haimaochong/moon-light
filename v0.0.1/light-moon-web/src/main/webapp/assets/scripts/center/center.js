@@ -1,4 +1,4 @@
-require(['jquery'], function ($) {
+(function ($) {
     var centerPage = function () {
         var init = function () {
             initEvent();
@@ -14,4 +14,4 @@ require(['jquery'], function ($) {
     };
 
     centerPage().init();
-});
+})(jQuery);
