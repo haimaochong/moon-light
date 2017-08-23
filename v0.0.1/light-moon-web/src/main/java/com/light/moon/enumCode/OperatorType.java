@@ -10,12 +10,17 @@ public enum OperatorType {
 	/**
 	 * 用户信息操作
 	 **/
-	USER_MSG(0, "用户信息操作"),
+	USER_LOGIN(0, "用户登录"),
+
+	/**
+	 * 用户信息操作
+	 **/
+	USER_MSG(1, "用户信息操作"),
 
 	/**
 	 * 投资操作
 	 **/
-	INVEST(1, "投资操作");
+	INVEST(2, "投资操作");
 
 	OperatorType(int code, String text) {
 		this.code = code;

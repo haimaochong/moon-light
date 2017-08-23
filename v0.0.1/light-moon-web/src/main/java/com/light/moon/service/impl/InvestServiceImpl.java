@@ -15,4 +15,9 @@ import com.light.moon.service.InvestService;
 @Service
 public class InvestServiceImpl extends AbsBaseService<InvestEntity, InvestDao> implements InvestService {
 
+	@Override
+	public Integer queryInvestNumByPlatform(Long platformId) {
+		return dao.queryInvestNumByPlatform(platformId);
+	}
+
 }

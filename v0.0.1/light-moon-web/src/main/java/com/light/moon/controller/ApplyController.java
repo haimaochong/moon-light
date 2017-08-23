@@ -9,7 +9,7 @@ public class ApplyController {
 
     @RequestMapping
     public String index() {
-        return "apply/index";
+        return "apply/apply";
     }
 
 }

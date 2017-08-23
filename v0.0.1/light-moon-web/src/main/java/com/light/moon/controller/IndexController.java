@@ -17,10 +17,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.common.collect.Lists;
 import com.light.moon.dto.QueryPlatformParams;
-import com.light.moon.entity.PlatFormInfoEntity;
+import com.light.moon.entity.PlatformInfoEntity;
 import com.light.moon.enumCode.ReturnMoneyType;
 import com.light.moon.searcher.DynamicSpecifications;
 import com.light.moon.searcher.WebSearchFilter;
+import com.light.moon.service.InvestService;
 import com.light.moon.service.PlatformInfoService;
 import com.light.moon.utils.GridUtils;
 import com.light.moon.vo.ResultVO;
@@ -32,10 +33,12 @@ public class IndexController {
 	@Resource
 	private PlatformInfoService platformInfoService;
 
+	@Resource
+	private InvestService investService;
+
 	@RequestMapping
 	public String index(ModelMap model) {
-		Iterable<PlatFormInfoEntity> iterator = platformInfoService.findAll(new Sort(Direction.DESC, "id"));
-
+		Iterable<PlatformInfoEntity> iterator = platformInfoService.findAll(new Sort(Direction.DESC, "id"));
 		model.put("platformList", Lists.newLinkedList(iterator));
 		model.put("returnMoneyType", ReturnMoneyType.values());
 		return "index/index";
@@ -47,19 +50,21 @@ public class IndexController {
 
 		Pageable pageable = GridUtils.buildPageable(params.getPageIndex(), params.getPageSize(),
 				new Sort(Direction.DESC, "createTime"));
-		Specification<PlatFormInfoEntity> filter = DynamicSpecifications.bySearchFilter(PlatFormInfoEntity.class, toFilter(params));
-		
-		Page<PlatFormInfoEntity> page = platformInfoService.findAll(filter, pageable);
+		Specification<PlatformInfoEntity> filter = DynamicSpecifications.bySearchFilter(PlatformInfoEntity.class,
+				toFilter(params));
+
+		Page<PlatformInfoEntity> page = platformInfoService.findAll(filter, pageable);
 
 		return GridUtils.toJson(page);
 	}
-	
+
 	private List<WebSearchFilter> toFilter(QueryPlatformParams params) {
 		List<WebSearchFilter> filters = Lists.newArrayList();
-		
+
 		GridUtils.addSearchFilterNotNull(filters, "id", WebSearchFilter.Operator.EQ, params.getPlatformId());
-		GridUtils.addSearchFilterNotNull(filters, "isInvestCycle", WebSearchFilter.Operator.EQ, params.getIsInvestCycle());
-		
+		GridUtils.addSearchFilterNotNull(filters, "isInvestCycle", WebSearchFilter.Operator.EQ,
+				params.getIsInvestCycle());
+
 		return filters;
 	}
 
@@ -67,7 +72,7 @@ public class IndexController {
 	@ResponseBody
 	public ResultVO queryPlatformInfo(Long platformInfoId) {
 
-		PlatFormInfoEntity formInfoEntity = platformInfoService.findOne(platformInfoId);
+		PlatformInfoEntity formInfoEntity = platformInfoService.findOne(platformInfoId);
 		if (null == formInfoEntity) {
 			return ResultVO.err("平台不存在，请刷新重试！");
 		}

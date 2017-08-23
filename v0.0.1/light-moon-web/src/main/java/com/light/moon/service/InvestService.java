@@ -11,4 +11,6 @@ import com.light.moon.entity.InvestEntity;
  */
 public interface InvestService extends BaseService<InvestEntity, InvestDao> {
 
+	public Integer queryInvestNumByPlatform(Long platformId);
+
 }

@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <jsp:include page="../commons/head.jsp"></jsp:include>
+    <%@ include file="../commons/head.jsp"%>
     <div class="apply-desc">
         <div class="apply-desc-title">
             <div class="f-left">交单说明</div>

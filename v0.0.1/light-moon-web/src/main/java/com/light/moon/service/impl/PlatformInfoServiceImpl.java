@@ -2,8 +2,8 @@ package com.light.moon.service.impl;
 
 import org.springframework.stereotype.Service;
 
-import com.light.moon.dao.PlatFormInfoDao;
-import com.light.moon.entity.PlatFormInfoEntity;
+import com.light.moon.dao.PlatformInfoDao;
+import com.light.moon.entity.PlatformInfoEntity;
 import com.light.moon.service.PlatformInfoService;
 
 /**
@@ -13,6 +13,6 @@ import com.light.moon.service.PlatformInfoService;
  * 
  */
 @Service
-public class PlatformInfoServiceImpl extends AbsBaseService<PlatFormInfoEntity, PlatFormInfoDao> implements PlatformInfoService {
+public class PlatformInfoServiceImpl extends AbsBaseService<PlatformInfoEntity, PlatformInfoDao> implements PlatformInfoService {
 
 }

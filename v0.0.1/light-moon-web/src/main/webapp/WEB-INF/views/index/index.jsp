@@ -8,13 +8,12 @@
 </head>
 
 <body>
-    <jsp:include page="../commons/head.jsp"></jsp:include>
+    <%@ include file="../commons/head.jsp"%>
     <jsp:include page="search.jsp"></jsp:include>
     <div class="search-result mt-15">
         <div class="search-order-type">
             <ul>
-                <li class="selected-menu"><div class="search-type">按热度</div></li>
-                <li><div class="search-type">投标数</div></li>
+                <li class="selected-menu"><div class="search-type">投标数</div></li>
                 <li><div class="search-type">创建时间</div></li>
             </ul>
         </div>
@@ -52,7 +51,7 @@
                                 预计年华
                             </td>
                             <td rowspan="2" width="31%">
-                                已有%num%人参与
+                                已有%investNum%人参与
                             </td>
                         </tr>
                         <tr class="result-item-body">
@@ -76,16 +75,16 @@
     </div>
     
     <div id="dialog-confirm" title="登录" class="hide">
-    	<div id="_umfp" style="display:inline;width:1px;height:1px;overflow:hidden"></div>
+    	<div id="_umfp" style="display:inline;width:1px;height:1px;overflow:hidden;display: none"></div>
     	<div class="moon-form">
     		<ul>
     			<li>
-    				<div class="t-label">用户名/手机号码</div>
-    				<div class="t-item"><input type="text" /></div>
+    				<div class="t-label">手机号码</div>
+    				<div class="t-item"><input type="text" /><a h>注册</a></div>
     			</li>
     			<li>
     				<div class="t-label">登录密码</div>
-    				<div class="t-item"><input type="password" /></div>
+    				<div class="t-item"><input type="password" /><a>忘记密码？</a></div>
     			</li>
     			<li>
     				<div class="t-label"> </div>

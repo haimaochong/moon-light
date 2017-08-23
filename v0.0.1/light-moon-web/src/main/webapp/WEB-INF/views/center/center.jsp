@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <jsp:include page="../commons/head.jsp"></jsp:include>
+    <%@ include file="../commons/head.jsp"%>
     <table class="center-table">
         <tr>
             <td class="center-left person-ico">

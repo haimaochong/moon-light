@@ -1,5 +1,6 @@
 var services = {
-		QUERY_PLATFORM_LIST:"/index/queryPlatformList"
+		QUERY_PLATFORM_LIST:"/index/queryPlatformList",
+		CHECK_LOGIN:"/user/checkLogin"
 };
 
 (function ($) {
@@ -33,22 +34,32 @@ var services = {
             });
             
             $(document).on("click", ".js-apply-btn", function() {
-            	$("#dialog-confirm").dialog({
-            		width: 450,
-            		modal: true,
-            		buttons: {
-            			"登陆": function() {
-            				$( this ).dialog( "close" );
-            			},
-            			"跳过 >>": function() {
-            				$( this ).dialog( "close" );
-            			}
-            		}
-            	});
-            	
-            	$('.ui-dialog-buttonpane').find('button:contains("登陆")').attr("disabled", "disabled");
-            	initNoCaptcha();
+            	$.post(BASE_PATH + services.CHECK_LOGIN, {}, function (result) {
+                    if (result &&result.code == 0) {
+                		if(!result.body) {
+                			showLoginDialog();
+                			return;
+                		}
+                    }
+                    window.location.href = BASE_PATH + "/apply";
+                });
             });
+        }, showLoginDialog = function() {
+        	$("#dialog-confirm").dialog({
+        		width: 450,
+        		modal: true,
+        		buttons: {
+        			"登陆": function() {
+        				$( this ).dialog( "close" );
+        			},
+        			"跳过 >>": function() {
+        				window.location.href = BASE_PATH + "/apply";
+        			}
+        		}
+        	});
+        	
+        	$('.ui-dialog-buttonpane').find('button:contains("登陆")').attr("disabled", "disabled");
+        	initNoCaptcha();
         }, initNoCaptcha = function() {
         	var nc = new noCaptcha();
         	var nc_appkey = 'FFFF0000000001774593';  // 应用标识,不可更改
@@ -80,7 +91,7 @@ var services = {
                     var trHtml = $("#result-tr").html();
                     for (var i = 0; i < rows.length; i++) {
                         contentHtml += trHtml.replace("%img%", rows[i].img).replace("%type%", rows[i].type).replace("%minInvestAccount%", rows[i].minInvestAccount)
-                            .replace("%date%", rows[i].date).replace("%a%", rows[i].a).replace("%num%", rows[i].num);
+                            .replace("%date%", rows[i].date).replace("%a%", rows[i].a).replace("%investNum%", rows[i].investNum);
                     }
                     $(".search-result-items").html(contentHtml);
                     
@@ -94,7 +105,6 @@ var services = {
                 	});
                 }
             });
-        	
         };
 
         return {

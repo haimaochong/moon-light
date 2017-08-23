@@ -1,7 +1,7 @@
 package com.light.moon.service;
 
-import com.light.moon.dao.PlatFormInfoDao;
-import com.light.moon.entity.PlatFormInfoEntity;
+import com.light.moon.dao.PlatformInfoDao;
+import com.light.moon.entity.PlatformInfoEntity;
 
 /**
  * 投资记录服务接口
@@ -9,6 +9,6 @@ import com.light.moon.entity.PlatFormInfoEntity;
  * @author lihh
  * 
  */
-public interface PlatformInfoService extends BaseService<PlatFormInfoEntity, PlatFormInfoDao> {
+public interface PlatformInfoService extends BaseService<PlatformInfoEntity, PlatformInfoDao> {
 
 }

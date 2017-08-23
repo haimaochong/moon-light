@@ -27,7 +27,7 @@ import com.light.moon.enumCode.ReturnMoneyType;
 @DynamicInsert
 @DynamicUpdate
 @Table(name = "MOON_PLATFORM_INFO")
-public class PlatFormInfoEntity extends BaseId implements Serializable {
+public class PlatformInfoEntity extends BaseId implements Serializable {
 
 	/**
 	 * 
@@ -49,6 +49,8 @@ public class PlatFormInfoEntity extends BaseId implements Serializable {
 	private ReturnMoneyType returnMoneyType;
 
 	private String desc;
+
+	private Integer investNum;
 
 	private List<InvestEntity> invests;
 
@@ -114,6 +116,14 @@ public class PlatFormInfoEntity extends BaseId implements Serializable {
 
 	public void setDesc(String desc) {
 		this.desc = desc;
+	}
+
+	public Integer getInvestNum() {
+		return investNum;
+	}
+
+	public void setInvestNum(Integer investNum) {
+		this.investNum = investNum;
 	}
 
 	@OneToMany(mappedBy = "platForm", fetch = FetchType.LAZY, cascade = { CascadeType.ALL })

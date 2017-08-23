@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.common.collect.Lists;
+import com.light.moon.context.ThreadLocalInfo;
 import com.light.moon.dto.UserDto;
 import com.light.moon.entity.InvestEntity;
 import com.light.moon.entity.UserInfoEntity;
@@ -23,7 +24,6 @@ import com.light.moon.searcher.WebSearchFilter;
 import com.light.moon.service.InvestService;
 import com.light.moon.service.UserInfoService;
 import com.light.moon.utils.GridUtils;
-import com.light.moon.utils.ThreadLocalInfo;
 import com.light.moon.vo.ResultVO;
 
 @Controller
@@ -38,7 +38,7 @@ public class CenterController {
 
 	@RequestMapping
 	public String index() {
-		return "center/index";
+		return "center/center";
 	}
 
 	@RequestMapping(value = "/queryUserInfo", method = RequestMethod.POST)

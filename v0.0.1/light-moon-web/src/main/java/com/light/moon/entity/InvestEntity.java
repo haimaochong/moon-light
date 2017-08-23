@@ -31,7 +31,7 @@ public class InvestEntity extends BaseId implements Serializable {
 	 */
 	private static final long serialVersionUID = 3517628549357289439L;
 
-	private PlatFormInfoEntity platForm;
+	private PlatformInfoEntity platForm;
 
 	private UserInfoEntity user;
 
@@ -49,11 +49,11 @@ public class InvestEntity extends BaseId implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "PALTFORM_ID")
-	public PlatFormInfoEntity getPlatForm() {
+	public PlatformInfoEntity getPlatForm() {
 		return platForm;
 	}
 
-	public void setPlatForm(PlatFormInfoEntity platForm) {
+	public void setPlatForm(PlatformInfoEntity platForm) {
 		this.platForm = platForm;
 	}
 

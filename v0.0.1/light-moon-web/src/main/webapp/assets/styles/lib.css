@@ -105,6 +105,11 @@ body {
     margin-bottom: 40px;
 }
 
+a{
+	color: blue;
+	font-size: 12px;
+}
+
 .top-tip {
     width: 100%;
     background-color: #F9F9F9;
@@ -245,6 +250,11 @@ input[type=button]{
     border: solid thin #DDDDDD;
     margin: 5px;
     background-color: #DDDDDD;
+}
+
+.moon-form {
+	height:auto;
+	margin-bottom: 40px;
 }
 
 .moon-form ul li {

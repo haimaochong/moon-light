@@ -2,7 +2,7 @@ package com.light.moon.dao;
 
 import org.springframework.stereotype.Repository;
 
-import com.light.moon.entity.PlatFormInfoEntity;
+import com.light.moon.entity.PlatformInfoEntity;
 
 /**
  * 平台信息Dao
@@ -11,6 +11,6 @@ import com.light.moon.entity.PlatFormInfoEntity;
  * 
  */
 @Repository
-public interface PlatFormInfoDao extends BaseDao<PlatFormInfoEntity> {
+public interface PlatformInfoDao extends BaseDao<PlatformInfoEntity> {
 
 }

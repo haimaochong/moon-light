@@ -1,6 +1,7 @@
 package com.light.moon.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -39,11 +40,13 @@ public class UserInfoEntity extends BaseId implements Serializable {
 
 	private String email;
 
-	private String accountForZFB;
+	private String accountForZfb;
 
-	private String accountForWX;
+	private String accountForWx;
 
 	private PayType payType;
+
+	private Date registTime;
 
 	public String getLoginName() {
 		return loginName;
@@ -93,20 +96,20 @@ public class UserInfoEntity extends BaseId implements Serializable {
 		this.email = email;
 	}
 
-	public String getAccountForZFB() {
-		return accountForZFB;
+	public String getAccountForZfb() {
+		return accountForZfb;
 	}
 
-	public void setAccountForZFB(String accountForZFB) {
-		this.accountForZFB = accountForZFB;
+	public void setAccountForZfb(String accountForZfb) {
+		this.accountForZfb = accountForZfb;
 	}
 
-	public String getAccountForWX() {
-		return accountForWX;
+	public String getAccountForWx() {
+		return accountForWx;
 	}
 
-	public void setAccountForWX(String accountForWX) {
-		this.accountForWX = accountForWX;
+	public void setAccountForWx(String accountForWx) {
+		this.accountForWx = accountForWx;
 	}
 
 	public PayType getPayType() {
@@ -115,6 +118,14 @@ public class UserInfoEntity extends BaseId implements Serializable {
 
 	public void setPayType(PayType payType) {
 		this.payType = payType;
+	}
+
+	public Date getRegistTime() {
+		return registTime;
+	}
+
+	public void setRegistTime(Date registTime) {
+		this.registTime = registTime;
 	}
 
 }

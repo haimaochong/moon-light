@@ -1,4 +1,4 @@
-package com.light.moon.utils;
+package com.light.moon.context;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,6 +10,8 @@ public class ThreadLocalInfo {
 	private final ThreadLocal<HttpServletRequest> currentRequest = new ThreadLocal<HttpServletRequest>();
 
 	private final ThreadLocal<HttpServletResponse> currentResponse = new ThreadLocal<HttpServletResponse>();
+
+	private final ThreadLocal<String> currentSessionId = new ThreadLocal<String>();
 
 	private final ThreadLocal<UserDto> currentUser = new ThreadLocal<UserDto>();
 
@@ -36,6 +38,14 @@ public class ThreadLocalInfo {
 
 	public void setResponse(HttpServletResponse response) {
 		this.currentResponse.set(response);
+	}
+
+	public String getSessionId() {
+		return (String) this.currentSessionId.get();
+	}
+
+	public void setSessionId(String currentSessionId) {
+		this.currentSessionId.set(currentSessionId);
 	}
 
 	public UserDto getUser() {
