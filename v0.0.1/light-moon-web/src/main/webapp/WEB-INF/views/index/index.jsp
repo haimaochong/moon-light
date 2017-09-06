@@ -5,105 +5,123 @@
     <%@ include file="../commons/resources.jsp"%>
     <link type="text/css" href="//g.alicdn.com/sd/ncpc/nc.css?t=1503384835379" rel="stylesheet"/>
     <link href="${mimeBase}/styles/index.css?version=${version}" rel="stylesheet" type="text/css" />
+    
+    <link href="${mimeBase}/images/favicon.ico" rel="icon" type="image/x-icon" />
+    <title>安心返利</title>
 </head>
 
 <body>
     <%@ include file="../commons/head.jsp"%>
-    <jsp:include page="search.jsp"></jsp:include>
-    <div class="search-result mt-15">
-        <div class="search-order-type">
-            <ul>
-                <li class="selected-menu"><div class="search-type">投标数</div></li>
-                <li><div class="search-type">创建时间</div></li>
-            </ul>
-        </div>
-        <div class="lihh-clear"></div>
-        <div class="search-result-items"></div>
-        <div class="pageDiv">
-	        <ul class="page" id="page"></ul>
-        </div>
-    </div>
-
-    <div id="result-tr" class="hide">
-        <div class="search-result-tr">
-            <div class="search-result-item">
-                <div class="result-ico">
-                    <div class="result-ico-content">
-                            <span class="result-ico-img">
-                                <img src="${mimeBase}/images/test.png">
-                            </span>
-                        <div class="lihh-clear"></div>
-                        <span class="result-type">
-                                %type%
-                        </span>
-                    </div>
-                </div>
-                <div class="result-item-content">
-                    <table>
-                        <tr class="result-item-head">
-                            <td width="23%">
-                                起投金额
-                            </td>
-                            <td width="23%">
-                                投资周期
-                            </td>
-                            <td width="23%">
-                                预计年华
-                            </td>
-                            <td rowspan="2" width="31%">
-                                已有%investNum%人参与
-                            </td>
-                        </tr>
-                        <tr class="result-item-body">
-                            <td>
-                                %minInvestAccount%
-                            </td>
-                            <td>
-                                %date%
-                            </td>
-                            <td class="lhh-c-ori">
-                                %a%%
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <div>
-                    <input class="result-item-btn js-apply-btn" type="button" value="我要投资" />
-                </div>
-            </div>
-        </div>
+    <div class="index-content">
+    	<div class="show-amount-div">
+    		<div class="show-all-amount">
+    			<div class="show-amount-label f-nocopy">总成交金额（元）</div>
+    			<div class="show-amount-item">￥2,208,999,450</div>
+    		</div>
+    		<div class="show-all-amount all-amount-bottom">
+    			<div class="show-amount-label f-nocopy">总返利金额（元）</div>
+    			<div class="show-amount-item">￥2,208,999,450</div>
+    		</div>
+    	</div>
+    	<div class="show-others">
+    		<div class="notice-div">
+    			<img class="mt-10" src="${mimeBase}/images/notice-logo.png">
+    			<div class="js-notice-div">
+	    			<ul>
+	    				<c:forEach items="${noticeList }" var="item">
+		    				<li class="js-notice" data="${item.id }">${item.title }</li>
+	    				</c:forEach>
+	    			</ul>
+    			</div>
+    		</div>
+    		<div class="relate-div others-bottom">
+    			<div class="rela-left">
+					<img class="f-left" src="${mimeBase}/images/rela-logo1.gif">
+					<div class="rela-item f-left">在线客服QQ<br/>292071141</div>
+    			</div>
+    			<div class="rela-right">
+					<img class="f-left" src="${mimeBase}/images/rela-logo2.gif">
+					<div class="rela-item f-left">官方Q群<br/>292071141</div>
+    			</div>
+    		</div>
+    	</div>
+    	<div class="f-clear"></div>
+    	<div class="ad-div">
+    		<div class="ad-item f-nocopy">
+    			<img src="${mimeBase}/images/ad1.png">
+    		</div>
+    		<div class="ad-item f-nocopy">
+    			<img src="${mimeBase}/images/ad2.png">
+    		</div>
+    		<div class="ad-item f-nocopy">
+    			<img src="${mimeBase}/images/ad3.png">
+    		</div>
+    	</div>
+    	<div class="platform-list-div">
+    		<div class="platform-search-div">
+    			<div class="search-label">平台名称</div>
+    			<div class="search-item"><input type="text" placeholder="请输入要查找的平台名称" class="f-text js-platformName" /></div>
+    			<img class="search-img js-platformSearch" src="${mimeBase}/images/search.png">
+    			<img class="search-notice" src="${mimeBase}/images/search-notice.png">
+    		</div>
+    		<div class="search-split"></div>
+    		<div class="platform-list">
+				   		
+    		</div>
+    		<div class="show-more-div">
+    			<input type="button" class="f-btn show-more-tip hide" value="显示更多"/>
+    			<div class="no-more-tip hide">没有更多~</div>
+    		</div>
+    	</div>
     </div>
     
-    <div id="dialog-confirm" title="登录" class="hide">
-    	<div id="_umfp" style="display:inline;width:1px;height:1px;overflow:hidden;display: none"></div>
-    	<div class="moon-form">
-    		<ul>
-    			<li>
-    				<div class="t-label">手机号码</div>
-    				<div class="t-item"><input type="text" /><a h>注册</a></div>
-    			</li>
-    			<li>
-    				<div class="t-label">登录密码</div>
-    				<div class="t-item"><input type="password" /><a>忘记密码？</a></div>
-    			</li>
-    			<li>
-    				<div class="t-label"> </div>
-    				<div class="t-item">
-	    				<div class="ln">
-							<div id="dom_id"></div>
-						</div>
-				
-						<input type='hidden' id='csessionid' name='csessionid'/>
-						<input type='hidden' id='sig' name='sig'/>
-						<input type='hidden' id='token' name='token'/>
-						<input type='hidden' id='scene' name='scene'/>
+    <div id="platform-item-model" class="hide">
+    	<div class="platform-item" data="%platformId%">
+			<div class="platform-item-top">
+				<div class="platform-name">%platformName%</div>
+				<div class="platform-keyword-list f-nocopy">
+					<div class="platform-keyword">网贷之家第一名</div>
+					<div class="platform-keyword">纽交所IPO上市系</div>
+					<div class="platform-keyword">兴业银行存管</div>
+				</div>
+				<div class="platform-type-list">
+					<div class="platform-type-item f-nocopy">
+						<div class="platform-type-left"></div>
+						<div class="platform-type">推荐标</div>
+						<div class="platform-type-right"></div>
 					</div>
-    			</li>
-    		</ul>
-    	</div>
-	</div>
+					<div class="platform-type-item f-nocopy">
+						<div class="platform-type-left"></div>
+						<div class="platform-type">明星标</div>
+						<div class="platform-type-right"></div>
+					</div>
+					<div class="platform-type-item f-nocopy">
+						<div class="platform-type-left"></div>
+						<div class="platform-type">可复投</div>
+						<div class="platform-type-right"></div>
+					</div>
+				</div>
+			</div>
+			<div class="platform-item-content">
+				<img class="platform-logo" src="${base}/image/read/%icoUrl%">
+				<div class="platform-desc-div">
+					<div class="platform-desc">
+						<div class="desc-1 f-text-right"><span class="desc-font">1</span>月标</div>
+						<div class="desc-2 f-text-left">每投资 <span class="desc-font">20000</span></div>
+						<div class="desc-3 f-text-left">返 <span class="desc-font">230</span></div>
+					</div>
+				</div>
+				<div class="plaform-show-more-div">
+					<input type="button" class="f-btn show-more-btn" value="查看攻略"/>
+				</div>
+			</div>
+		</div> 
+    </div>
+    
+    <%@ include file="../commons/foot.jsp"%>
 </body>
 
 <script type="text/javascript" src="//g.alicdn.com/sd/ncpc/nc.js?t=1503384835379"></script>
+<script src="${vendorsBase}/jquery.liMarquee.js?version=${version}"></script>
 <script src="${scripts}/index/index.js?version=${version}"></script>
 </html>

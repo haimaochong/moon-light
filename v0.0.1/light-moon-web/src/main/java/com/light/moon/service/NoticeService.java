@@ -1,0 +1,18 @@
+package com.light.moon.service;
+
+import java.util.List;
+
+import com.light.moon.dao.NoticeDao;
+import com.light.moon.entity.NoticeEntity;
+
+/**
+ * 公告服务接口
+ * 
+ * @author lihh
+ * 
+ */
+public interface NoticeService extends BaseService<NoticeEntity, NoticeDao> {
+
+	public List<NoticeEntity> queryNewNotice();
+
+}

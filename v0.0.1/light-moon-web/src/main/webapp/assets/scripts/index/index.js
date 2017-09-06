@@ -4,105 +4,60 @@ var services = {
 };
 
 (function ($) {
+	var currentPageIndex = 0;
+	
     var indexPage = (function () {
         var init = function () {
-        	search(1);
+        	initComponent();
+        	search();
             initEvent();
+        }, initComponent = function() {
+        	$('.js-notice-div').liMarquee({
+                direction: 'up',
+                scrollamount: 20
+            });
         }, initEvent = function () {
-            $(".search-order-type li").click(function () {
-                $(this).addClass("selected-menu").siblings("li").removeClass("selected-menu");
-            });
-            $(".search-up-btn").click(function () {
-                $(".search-content").slideToggle(500);
-                if($(this).val() == "收起筛选") {
-                    $(this).val("展示筛选");
-                } else {
-                    $(this).val("收起筛选");
-                }
-            });
-            $(".search-menu").click(function () {
-                $(this).parents(".search-item").find(".search-menu").removeClass("search-selected-menu");
-                $(this).addClass("search-selected-menu");
-            });
-            $(".search-content-more div").click(function() {
-            	if($(this).text() == "[更多]") {
-                	$(this).text("[收起]");
-                } else {
-                	$(this).text("[更多]");
-                }
-                $(".search-content-div ul:first").siblings("ul").slideToggle(500);
+            $("body").on("click", ".show-more-btn", function() {
+            	var platformId = $(this).parents(".platform-item").attr("data");
+            	window.location.href = BASE_PATH + "/apply?platformInfoId="+platformId;
             });
             
-            $(document).on("click", ".js-apply-btn", function() {
-            	$.post(BASE_PATH + services.CHECK_LOGIN, {}, function (result) {
-                    if (result &&result.code == 0) {
-                		if(!result.body) {
-                			showLoginDialog();
-                			return;
-                		}
-                    }
-                    window.location.href = BASE_PATH + "/apply";
-                });
+            $(".show-more-tip").click(function() {
+            	search();
             });
-        }, showLoginDialog = function() {
-        	$("#dialog-confirm").dialog({
-        		width: 450,
-        		modal: true,
-        		buttons: {
-        			"登陆": function() {
-        				$( this ).dialog( "close" );
-        			},
-        			"跳过 >>": function() {
-        				window.location.href = BASE_PATH + "/apply";
-        			}
-        		}
-        	});
+            
+            $(".js-platformSearch").click(function() {
+            	currentPageIndex = 0;
+            	search();
+            });
+        }, search = function() {
+        	var params = {};
+        	params["pageIndex"] = ++currentPageIndex;
+        	params["platformName"] = $(".js-platformName").val().trim();
         	
-        	$('.ui-dialog-buttonpane').find('button:contains("登陆")').attr("disabled", "disabled");
-        	initNoCaptcha();
-        }, initNoCaptcha = function() {
-        	var nc = new noCaptcha();
-        	var nc_appkey = 'FFFF0000000001774593';  // 应用标识,不可更改
-            var nc_scene = 'login';  //场景,不可更改
-        	var nc_token = [nc_appkey, (new Date()).getTime(), Math.random()].join(':');
-        	var nc_option = {
-        		renderTo: '#dom_id',//渲染到该DOM ID指定的Div位置
-        		appkey: nc_appkey,
-                scene: nc_scene,
-        		token: nc_token,
-                trans: '{"name1":"code100"}',//测试用，特殊nc_appkey时才生效，正式上线时请务必要删除；code0:通过;code100:点击验证码;code200:图形验证码;code300:恶意请求拦截处理
-        		callback: function (data) {
-        			document.getElementById('csessionid').value = data.csessionid;
-        			document.getElementById('sig').value = data.sig;
-        			document.getElementById('token').value = nc_token;
-                    document.getElementById('scene').value = nc_scene;
-                    $('.ui-dialog-buttonpane').find('button:contains("登陆")').removeAttr("disabled");
-        		}
-        	};
-        	nc.init(nc_option);
-        }, search = function(pageIndex) {
-        	$.post(BASE_PATH + services.QUERY_PLATFORM_LIST, {pageIndex: pageIndex}, function (result) {
+        	$.post(BASE_PATH + services.QUERY_PLATFORM_LIST, params, function (result) {
                 if (result) {
                 	var data = eval('(' + result + ')'); 
-                	var total = data.total;
                 	var rows = data.rows;
                 	
                 	var contentHtml = "";
-                    var trHtml = $("#result-tr").html();
+                    var trHtml = $("#platform-item-model").html();
                     for (var i = 0; i < rows.length; i++) {
-                        contentHtml += trHtml.replace("%img%", rows[i].img).replace("%type%", rows[i].type).replace("%minInvestAccount%", rows[i].minInvestAccount)
-                            .replace("%date%", rows[i].date).replace("%a%", rows[i].a).replace("%investNum%", rows[i].investNum);
+                        contentHtml += trHtml.replace("%platformName%", rows[i].name).replace("%icoUrl%", rows[i].icoUrl).replace("%platformId%", rows[i].id);
                     }
-                    $(".search-result-items").html(contentHtml);
-                    
-                    PubUtils.initPage({
-                		"pageId":"page",
-                		"pageIndex":pageIndex,
-                		"total":data.total,
-                		callBack:function(page, pageSize) {
-                			search(page);
-                		}
-                	});
+                    if(currentPageIndex == 1) {
+                    	$(".platform-list").html(contentHtml);
+                    } else {
+                    	$(".platform-list").append(contentHtml);
+                    }
+                    var currentNum = (currentPageIndex-1)*15 + rows.length;
+                    if(currentNum < data.records) {
+                    	$(".show-more-tip").show();
+                    	$(".no-more-tip").hide();
+                    } else {
+                    	$(".show-more-tip").hide();
+                    	$(".no-more-tip").show();
+                    }
                 }
             });
         };

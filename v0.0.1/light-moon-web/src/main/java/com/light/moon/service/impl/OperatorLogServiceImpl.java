@@ -8,6 +8,7 @@ import com.light.moon.dao.OperateLogDao;
 import com.light.moon.entity.OperateLogEntity;
 import com.light.moon.enumCode.OperatorType;
 import com.light.moon.service.OperatorLogService;
+import com.light.moon.utils.IdUtils;
 
 /**
  * 日志服务实现类
@@ -22,6 +23,7 @@ public class OperatorLogServiceImpl extends AbsBaseService<OperateLogEntity, Ope
 	@Override
 	public void addOperatorLog(String userName, OperatorType type, String msg) {
 		OperateLogEntity entity = new OperateLogEntity();
+		entity.setId(IdUtils.id());
 		entity.setUserName(userName);
 		entity.setType(type);
 		entity.setMsg(msg);

@@ -3,13 +3,16 @@ package com.light.moon.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -37,7 +40,11 @@ public class CenterController {
 	private InvestService investService;
 
 	@RequestMapping
-	public String index() {
+	public String index(ModelMap model, HttpServletRequest request) {
+		String page = request.getParameter("page");
+		if(StringUtils.isNotBlank(page)) {
+			model.addAttribute("page", page);
+		}
 		return "center/center";
 	}
 

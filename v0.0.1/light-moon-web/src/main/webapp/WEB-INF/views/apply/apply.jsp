@@ -4,53 +4,41 @@
 <head>
     <%@ include file="../commons/resources.jsp"%>
     <link href="${mimeBase}/styles/apply.css" rel="stylesheet" type="text/css" />
+    
+    <link href="${mimeBase}/images/favicon.ico" rel="icon" type="image/x-icon" />
+    <title>项目详情</title>
 </head>
 
 <body>
     <%@ include file="../commons/head.jsp"%>
-    <div class="apply-desc">
-        <div class="apply-desc-title">
-            <div class="f-left">交单说明</div>
-            <div class="f-right">
-                <input type="button" value="展开说明" class="apply-desc-up-btn">
-            </div>
-            <div class="lihh-clear"></div>
-        </div>
-        <div class="apply-desc-content hide"></div>
+    <div class="page-index">首页 &gt; 项目详情</div>
+    <div class="apply-div">
+    	<div class="apply-top-div">
+    		<div class="apply-logo-div">
+    			<img class="platform-logo" src="${base}/image/read/${platformInfo.icoUrl}">
+    			<div class="platform-name">${platformInfo.name}</div>
+    			<div class="f-clear">
+    				<div class="platform-keyword">网贷之家第一名</div>
+    				<div class="platform-keyword">纽交所IPO上市系</div>
+    				<div class="platform-keyword">广发银行存管</div>
+    			</div>
+    		</div>
+    		<img class="apply-desc" src="${mimeBase}/images/apply-desc.png">
+    	</div>
+    	<div class="f-clear"></div>
+    	<div class="apply-content-div">
+			<pre class="js-platform-desc">${platformInfo.desc}</pre>
+    	</div>
+    	<div class="f-clear"></div>
+    	<div class="apply-operate-div">
+    		<input type="button" class="f-btn f-org-btn apply-btn apply-submit-btn" value="提交投资回单" />
+    		<input type="button" id="js-copy-btn" data-clipboard-target="content" class="f-btn f-org-btn apply-btn js-copy-btn" value="一键复制攻略" />
+	   		<div class="apply-desc-div">以上为安心返利为您提供的攻略，大家为了更高效地做单可以复制加以改进</div>
+    	</div>
     </div>
-    <div class="apply-detail-div">
-        <div class="apply-title">
-            <img class="item-img" src="${mimeBase}/images/test.png" />
-            <div class="item-name">宜人贷</div>
-        </div>
-        <div class="apply-detail">
-            <pre>
-【宜人贷】月标！3月标！网贷之家第一名！广发银行存管！
-
-【平台资质】网贷之家第一名（总共100名）！2015年12月18日在美国纽交所上市，有十一年以上的风控经验！
-                百度1000万美元认购宜人贷IPO新股！广发银行存管！
-【通用推广链接】http://t.cn/R9OXtcC
-【投资收益】
-【2W定额档/新手标】利息160+红包70+返现140=370，综合年化22.2%
-【5W定额档/3月标】利息625+红包70+返现350=1045，综合年化8.36%
-【10W定额档/3月标】利息1250+红包70+返现700=2020，综合年化8.08%
-【20W定额档/3月标】利息2500+红包70+返现1400=3970，综合年化7.94%
-【50W定额档/3月标】利息6250+红包70+返现3500=9820，综合年化7.85%
-【注意事项】
-1、仅限首投！定档2/5/10/20/50w！
-2、请仔细阅读标的信息！月标为2万定额档，3月标最高50万定额档！
-3、标的名称：“宜定盈（新手标）、宜定盈3月标”
-【交单格式】手机+真实姓名+金额
-
-
-【撸毛代理价：110元/万】
-            </pre>
-        </div>
-        <div>
-            <input class="apply-btn" type="button" value="交单" />
-        </div>
-    </div>
+    <%@ include file="../commons/foot.jsp"%>
 </body>
 
+<script src="${mimeBase}/vendors/ZeroClipboard/ZeroClipboard.min.js?version=${version}"></script>
 <script src="${scripts}/apply/apply.js?version=${version}"></script>
 </html>

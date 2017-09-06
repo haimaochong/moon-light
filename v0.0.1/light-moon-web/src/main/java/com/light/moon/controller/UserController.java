@@ -1,9 +1,8 @@
 package com.light.moon.controller;
 
-import java.util.Date;
-
 import javax.annotation.Resource;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,10 +10,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.light.moon.context.ThreadLocalInfo;
 import com.light.moon.context.UserContext;
-import com.light.moon.dto.UserDto;
+import com.light.moon.dto.RegistUserDto;
 import com.light.moon.entity.UserInfoEntity;
-import com.light.moon.enumCode.OperatorType;
-import com.light.moon.service.OperatorLogService;
 import com.light.moon.service.UserInfoService;
 import com.light.moon.vo.ResultVO;
 
@@ -25,12 +22,41 @@ public class UserController {
 	@Resource
 	private UserInfoService userInfoService;
 
-	@Resource
-	private OperatorLogService operatorLogService;
-
 	private UserContext userContext = UserContext.getInstance();
 
 	private ThreadLocalInfo threadLocalInfo = ThreadLocalInfo.getInstance();
+
+	@RequestMapping(value = "regist", method = RequestMethod.POST)
+	@ResponseBody
+	public ResultVO regist(RegistUserDto user) {
+		ResultVO validResult = validRegist(user);
+		if (validResult.getCode() != 0) {
+			return validResult;
+		}
+
+		String errorMsg = userInfoService.registUser(user);
+		if (StringUtils.isBlank(errorMsg)) {
+			return ResultVO.ok();
+		} else {
+			return ResultVO.err(errorMsg);
+		}
+	}
+
+	private ResultVO validRegist(RegistUserDto user) {
+		if (StringUtils.isBlank(user.getLoginName())) {
+			return ResultVO.err("手机号码不可为空");
+		}
+
+		if (StringUtils.isBlank(user.getPassword())) {
+			return ResultVO.err("登录密码不可为空");
+		}
+
+		if (!user.getPassword().equals(user.getConfirmPassword())) {
+			return ResultVO.err("两次密码不一致，请重新输入");
+		}
+
+		return ResultVO.ok();
+	}
 
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	@ResponseBody
@@ -38,14 +64,7 @@ public class UserController {
 		UserInfoEntity user = userInfoService.queryUser(loginName, password);
 
 		if (null != user) {
-			UserDto userDto = new UserDto();
-			userDto.setUserId(user.getId());
-			userDto.setLoginName(user.getLoginName());
-			userDto.setUserName(user.getUserName());
-			userDto.setLastOperateTime(new Date());
-			userContext.addLoginUser(threadLocalInfo.getSessionId(), userDto);
-
-			operatorLogService.addOperatorLog(user.getLoginName(), OperatorType.USER_LOGIN, "用户登录");
+			userInfoService.login(user);
 			return ResultVO.ok();
 		} else {
 			return ResultVO.err("用户名或密码错误，请重新输入");

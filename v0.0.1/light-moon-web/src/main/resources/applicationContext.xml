@@ -15,7 +15,7 @@
 			</array>
 		</property>
 	</bean>
-
+	
 	<import resource="classpath*:/application-moon-metadata.xml" />
 	<import resource="classpath*:/application-moon-scan.xml" />
 

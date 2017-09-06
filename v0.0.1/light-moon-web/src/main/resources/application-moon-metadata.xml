@@ -10,7 +10,7 @@
 	http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
 	<import resource="classpath*:/application-moon-datasource.xml" />
-
+	
 	<context:component-scan base-package="com.light">
 		<context:exclude-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />

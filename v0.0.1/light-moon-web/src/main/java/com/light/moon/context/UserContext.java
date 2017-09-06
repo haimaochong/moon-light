@@ -50,6 +50,8 @@ public class UserContext {
 		if (loginUserMap.containsKey(sessionId)) {
 			UserDto userDto = loginUserMap.get(sessionId);
 			loginUserMap.remove(sessionId);
+			ThreadLocalInfo.getInstance().setUser(null);
+			ThreadLocalInfo.getInstance().getRequest().getSession().removeAttribute("loginName");
 			return userDto;
 		}
 		return null;

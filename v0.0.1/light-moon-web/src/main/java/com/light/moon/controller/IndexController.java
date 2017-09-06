@@ -16,68 +16,49 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.common.collect.Lists;
-import com.light.moon.dto.QueryPlatformParams;
+import com.light.moon.entity.NoticeEntity;
 import com.light.moon.entity.PlatformInfoEntity;
-import com.light.moon.enumCode.ReturnMoneyType;
 import com.light.moon.searcher.DynamicSpecifications;
 import com.light.moon.searcher.WebSearchFilter;
-import com.light.moon.service.InvestService;
+import com.light.moon.service.NoticeService;
 import com.light.moon.service.PlatformInfoService;
 import com.light.moon.utils.GridUtils;
-import com.light.moon.vo.ResultVO;
 
 @Controller
-@RequestMapping("/index")
+@RequestMapping(value = { "/", "/index" })
 public class IndexController {
 
 	@Resource
 	private PlatformInfoService platformInfoService;
 
 	@Resource
-	private InvestService investService;
+	private NoticeService noticeService;
 
 	@RequestMapping
 	public String index(ModelMap model) {
-		Iterable<PlatformInfoEntity> iterator = platformInfoService.findAll(new Sort(Direction.DESC, "id"));
-		model.put("platformList", Lists.newLinkedList(iterator));
-		model.put("returnMoneyType", ReturnMoneyType.values());
+		List<NoticeEntity> noticeList = noticeService.queryNewNotice();
+		model.put("noticeList", noticeList);
 		return "index/index";
 	}
 
 	@RequestMapping(value = "/queryPlatformList", method = RequestMethod.POST)
 	@ResponseBody
-	public String queryPlatformList(QueryPlatformParams params) {
+	public String queryPlatformList(String platformName, Integer pageIndex) {
 
-		Pageable pageable = GridUtils.buildPageable(params.getPageIndex(), params.getPageSize(),
-				new Sort(Direction.DESC, "createTime"));
+		Pageable pageable = GridUtils.buildPageable(pageIndex, 15,
+				new Sort(Direction.DESC, "investNum").and(new Sort(Direction.ASC, "id")));
 		Specification<PlatformInfoEntity> filter = DynamicSpecifications.bySearchFilter(PlatformInfoEntity.class,
-				toFilter(params));
+				toFilter(platformName));
 
 		Page<PlatformInfoEntity> page = platformInfoService.findAll(filter, pageable);
 
 		return GridUtils.toJson(page);
 	}
 
-	private List<WebSearchFilter> toFilter(QueryPlatformParams params) {
+	private List<WebSearchFilter> toFilter(String platformName) {
 		List<WebSearchFilter> filters = Lists.newArrayList();
-
-		GridUtils.addSearchFilterNotNull(filters, "id", WebSearchFilter.Operator.EQ, params.getPlatformId());
-		GridUtils.addSearchFilterNotNull(filters, "isInvestCycle", WebSearchFilter.Operator.EQ,
-				params.getIsInvestCycle());
-
+		GridUtils.addSearchFilterNotNull(filters, "name", WebSearchFilter.Operator.LIKE, platformName);
 		return filters;
-	}
-
-	@RequestMapping(value = "/queryPlatformInfo", method = RequestMethod.POST)
-	@ResponseBody
-	public ResultVO queryPlatformInfo(Long platformInfoId) {
-
-		PlatformInfoEntity formInfoEntity = platformInfoService.findOne(platformInfoId);
-		if (null == formInfoEntity) {
-			return ResultVO.err("平台不存在，请刷新重试！");
-		}
-
-		return ResultVO.suc(formInfoEntity);
 	}
 
 }

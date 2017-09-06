@@ -21,7 +21,7 @@ import com.light.moon.dto.UserDto;
  * 用户登录拦截器
  * 
  * @author lihh
- *
+ * 
  */
 public class UserInfoFilter extends OncePerRequestFilter {
 
@@ -38,7 +38,10 @@ public class UserInfoFilter extends OncePerRequestFilter {
 		}
 
 		filterChain.doFilter(request, response);
-		requestAfter(request, response);
+
+		if (StringUtils.isBlank(excludeExp) || !reqUri.matches(excludeExp)) {
+			requestAfter(request, response);
+		}
 	}
 
 	private void requestBefore(HttpServletRequest request, HttpServletResponse response) {
@@ -57,7 +60,9 @@ public class UserInfoFilter extends OncePerRequestFilter {
 		ThreadLocalInfo threadLocalInfo = ThreadLocalInfo.getInstance();
 		UserDto user = threadLocalInfo.getUser();
 		if (null != user) {
-			request.setAttribute("loginName", user.getUserName());
+			request.getSession().setAttribute("loginName", user.getUserName());
+		} else {
+			request.getSession().removeAttribute("loginName");
 		}
 	}
 
@@ -66,6 +71,10 @@ public class UserInfoFilter extends OncePerRequestFilter {
 		if (null != cookies) {
 			for (Cookie cookie : cookies) {
 				if ("JSESSIONID".equals(cookie.getName().toUpperCase())) {
+					if(cookie.getMaxAge() < 0) {
+						break;
+					}
+					cookie.setMaxAge(30 * 60);
 					return cookie.getValue();
 				}
 			}

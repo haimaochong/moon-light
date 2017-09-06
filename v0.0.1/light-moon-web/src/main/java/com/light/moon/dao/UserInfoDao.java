@@ -16,5 +16,8 @@ public interface UserInfoDao extends BaseDao<UserInfoEntity> {
 
 	@Query("from UserInfoEntity t where t.loginName = ?1 and t.password = ?2 ")
 	public UserInfoEntity queryUser(String loginName, String password);
+	
+	@Query("from UserInfoEntity t where t.loginName = ?1 ")
+	public UserInfoEntity queryUser(String loginName);
 
 }

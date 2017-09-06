@@ -3,8 +3,6 @@ package com.light.moon.entity;
 import java.io.Serializable;
 
 import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
@@ -30,7 +28,6 @@ public class BaseId implements Serializable {
 	protected Long id;// 实体主键
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
 	public Long getId() {
 		return id;
