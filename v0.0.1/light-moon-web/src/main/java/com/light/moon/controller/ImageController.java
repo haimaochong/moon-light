@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.light.moon.entity.ImageEntity;
 import com.light.moon.service.ImageService;
+import com.light.moon.utils.FileUtils;
 
 @Controller
 @RequestMapping("/image")
@@ -46,7 +47,7 @@ public class ImageController {
 				return;
 			}
 
-			String fileUri = formatFileUri(fileBaseDir + imageEntity.getUri());
+			String fileUri = FileUtils.formatFileUri(fileBaseDir + imageEntity.getUri());
 			File file = new File(fileUri);
 			if (!file.exists() || !file.isFile()) {
 				logger.error("图片找不到或者不是文件，图片路径：" + fileUri);
@@ -55,7 +56,7 @@ public class ImageController {
 			}
 
 			BufferedImage bi = ImageIO.read(file);
-			ImageIO.write(bi, getFileFix(file.getName()), response.getOutputStream());
+			ImageIO.write(bi, FileUtils.getFileFix(file.getName()), response.getOutputStream());
 		} catch (IOException e) {
 			logger.error("读取图片发生错误！", e);
 			try {
@@ -64,29 +65,12 @@ public class ImageController {
 			}
 		}
 	}
-	
-	private String getFileFix(String fileName) {
-		return fileName.substring(fileName.lastIndexOf(".")+1, fileName.length());
-	}
 
 	private void readNoPic(HttpServletResponse response) throws IOException {
-		String fileUri = formatFileUri(fileBaseDir + noPicUri);
+		String fileUri = FileUtils.formatFileUri(fileBaseDir + noPicUri);
 		File file = new File(fileUri);
 		BufferedImage bi = ImageIO.read(file);
 		ImageIO.write(bi, "gif", response.getOutputStream());
-	}
-
-	private String formatFileUri(String uri) {
-		return replaceAll(replaceAll(uri, "\\", "/"), "/", File.separator);
-	}
-	
-	private String replaceAll(String str, String src, String dest) {
-		if(!str.contains(src)) {
-			return str;
-		} else {
-			str = str.replace(src, dest);
-			return replaceAll(str, src, dest);
-		}
 	}
 
 }
