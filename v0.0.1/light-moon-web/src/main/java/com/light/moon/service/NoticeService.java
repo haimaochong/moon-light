@@ -14,5 +14,9 @@ import com.light.moon.entity.NoticeEntity;
 public interface NoticeService extends BaseService<NoticeEntity, NoticeDao> {
 
 	public List<NoticeEntity> queryNewNotice();
+	
+	public NoticeEntity queryPreNotice(Long currentId);
+	
+	public NoticeEntity queryNextNotice(Long currentId);
 
 }

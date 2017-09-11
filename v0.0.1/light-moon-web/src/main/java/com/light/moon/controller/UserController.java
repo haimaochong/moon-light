@@ -51,10 +51,6 @@ public class UserController {
 			return ResultVO.err("登录密码不可为空");
 		}
 
-		if (!user.getPassword().equals(user.getConfirmPassword())) {
-			return ResultVO.err("两次密码不一致，请重新输入");
-		}
-
 		return ResultVO.ok();
 	}
 

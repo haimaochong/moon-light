@@ -49,9 +49,28 @@
 	float: right;
 }
 
+.notice-div{
+	position: relative;
+}
+
 .notice-div, .relate-div{
 	height: 195px;
 	background-color: white;
+}
+
+.more-notice-tip{
+	position: absolute;
+	top:30px;
+	right:40px;
+	color:#ADADAD;
+	font-size: 14px;
+	-moz-user-select:none;
+	-webkit-user-select:none;
+	cursor: pointer;
+}
+
+.more-notice-tip:HOVER{
+	color:#F15120;
 }
 
 .notice-div ul{

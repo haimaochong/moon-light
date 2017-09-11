@@ -33,7 +33,7 @@
     	<div class="apply-operate-div">
     		<input type="button" class="f-btn f-org-btn apply-btn apply-submit-btn" value="提交投资回单" />
     		<input type="button" id="js-copy-btn" data-clipboard-target="content" class="f-btn f-org-btn apply-btn js-copy-btn" value="一键复制攻略" />
-	   		<div class="apply-desc-div">以上为安心返利为您提供的攻略，大家为了更高效地做单可以复制加以改进</div>
+	   		<div class="apply-desc-div">以上为 [安心返利] 为您提供的攻略，大家为了更高效地做单可以复制加以改进</div>
     	</div>
     </div>
     <%@ include file="../commons/foot.jsp"%>

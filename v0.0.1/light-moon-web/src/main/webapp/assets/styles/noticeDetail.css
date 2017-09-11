@@ -1,0 +1,57 @@
+.all-notice-tip:HOVER{
+	cursor: pointer;
+	color: #F15120;
+}
+
+.notice-detail-div {
+	min-height: 100px;
+	width: 880px;
+	margin: auto;
+	background-color: white;
+	padding: 50px 60px 100px 60px;
+}
+
+.notice-title {
+	width: 600px;
+	margin: auto;
+	font-size: 20px;
+	font-family: "ºÚÌå";
+	font-weight: bold;
+	color: black;
+	margin-bottom: 20px;
+}
+
+.notice-create-time {
+	width: 100%;
+	text-align: right;
+	font-size: 14px;
+	color: #ADADAD;
+}
+
+.notice-content-div {
+	color: #333333;
+	min-height: 100px; 
+	font-size : 14px;
+	width: 750px;
+	margin: auto;
+	word-wrap:break-word;
+	margin-top:40px;
+	margin-bottom:60px;
+	text-align: left;
+	font-size: 14px;
+}
+
+.other-notice {
+	color: #ADADAD;
+	font-size: 14px;
+	width: 350px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	text-align: left;
+	cursor: pointer;
+}
+
+.other-notice:HOVER {
+	color:#F15120;
+}

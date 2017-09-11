@@ -12,8 +12,6 @@ public class RegistUserDto {
 
 	private String password;
 
-	private String confirmPassword;
-
 	public String getLoginName() {
 		return loginName;
 	}
@@ -28,14 +26,6 @@ public class RegistUserDto {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getConfirmPassword() {
-		return confirmPassword;
-	}
-
-	public void setConfirmPassword(String confirmPassword) {
-		this.confirmPassword = confirmPassword;
 	}
 
 }

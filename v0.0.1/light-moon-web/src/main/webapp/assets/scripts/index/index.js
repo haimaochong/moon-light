@@ -22,6 +22,15 @@ var services = {
             	window.location.href = BASE_PATH + "/apply?platformInfoId="+platformId;
             });
             
+            $(".js-notice").click(function() {
+            	var noticeId = $(this).attr("data");
+        		window.open(BASE_PATH + "/notice/detail/" + noticeId);
+            });
+            
+            $(".more-notice-tip").click(function() {
+            	window.open(BASE_PATH + "/notice");
+            });
+            
             $(".show-more-tip").click(function() {
             	search();
             });
@@ -50,6 +59,7 @@ var services = {
                     } else {
                     	$(".platform-list").append(contentHtml);
                     }
+                    $(".platform-list").find("div:hidden").slideDown(200);
                     var currentNum = (currentPageIndex-1)*15 + rows.length;
                     if(currentNum < data.records) {
                     	$(".show-more-tip").show();

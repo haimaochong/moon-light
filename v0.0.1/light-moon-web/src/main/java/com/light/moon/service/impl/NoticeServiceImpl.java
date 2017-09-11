@@ -22,4 +22,14 @@ public class NoticeServiceImpl extends AbsBaseService<NoticeEntity, NoticeDao> i
 		return dao.queryNewNotice();
 	}
 
+	@Override
+	public NoticeEntity queryPreNotice(Long currentId) {
+		return dao.queryPreNotice(currentId);
+	}
+
+	@Override
+	public NoticeEntity queryNextNotice(Long currentId) {
+		return dao.queryNextNotice(currentId);
+	}
+
 }

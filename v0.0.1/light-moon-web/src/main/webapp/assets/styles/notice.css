@@ -1,0 +1,74 @@
+.notice-list-div{
+	min-height: 100px;
+	width: 880px;
+	margin: auto;
+	background-color: white;
+	padding:30px 60px 40px 60px;
+}
+
+.notice-list{
+	width: 100%;
+	border-collapse:collapse;
+	border-bottom: 1px solid black;
+	table-layout:fixed;
+}
+
+.notice-list thead tr {
+	background-color: #EEEEEE;
+	height:30px;
+}
+
+.notice-list thead tr th {
+	color:#ADADAD;
+	font-size: 16px;
+	font-weight: normal;
+}
+
+.notice-list tbody tr {
+	height: 40px;
+	color:#ADADAD;
+	background-color: #F9F9F9;
+	border-bottom: 10px solid white;
+	border-top: 10px solid white;
+	cursor:pointer;
+}
+
+.notice-list tbody tr:HOVER {
+	color: #F15120;
+	background-color: #EEEEEE;
+}
+
+.notice-list td{
+	overflow:hidden;  
+    white-space:nowrap;  
+    text-overflow:ellipsis;  
+    -o-text-overflow:ellipsis;  
+    -icab-text-overflow: ellipsis;  
+    -khtml-text-overflow: ellipsis;  
+    -moz-text-overflow: ellipsis;  
+    -webkit-text-overflow: ellipsis;
+    padding:0px 20px 0px 10px;
+}
+
+.list-page-div{
+	color:#ADADAD;
+	font-size: 16px;
+	height:50px;
+	line-height: 40px;
+	border-top: 1px solid #ADADAD;
+}
+
+.page-div{
+	margin-left:6px;
+	margin-right:6px;
+}
+
+.page-menu{
+	cursor: pointer;
+	-moz-user-select:none;
+	-webkit-user-select:none;
+}
+
+.page-menu:HOVER{
+	color: #F15120;
+}

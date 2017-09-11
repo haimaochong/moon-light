@@ -26,6 +26,7 @@
     	<div class="show-others">
     		<div class="notice-div">
     			<img class="mt-10" src="${mimeBase}/images/notice-logo.png">
+    			<div class="more-notice-tip">[更多]</div>
     			<div class="js-notice-div">
 	    			<ul>
 	    				<c:forEach items="${noticeList }" var="item">
@@ -76,7 +77,7 @@
     </div>
     
     <div id="platform-item-model" class="hide">
-    	<div class="platform-item" data="%platformId%">
+    	<div class="platform-item hide" data="%platformId%">
 			<div class="platform-item-top">
 				<div class="platform-name">%platformName%</div>
 				<div class="platform-keyword-list f-nocopy">

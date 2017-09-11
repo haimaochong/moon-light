@@ -43,7 +43,7 @@ public class BatchApplyServiceImpl implements BatchApplyService {
 			response.setContentType("application/binary;charset=UTF-8");
 			response.setCharacterEncoding("UTF-8");
 			response.setHeader("Content-disposition",
-					"attachment filename=" + URLEncoder.encode("【安心返利】订单提交模板", "UTF-8"));
+					"attachment; filename=" + URLEncoder.encode("【安心返利】订单提交模板.xls", "UTF-8"));
 
 			br = new BufferedInputStream(new FileInputStream(file));
 			byte[] buf = new byte[1024];
