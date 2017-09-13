@@ -1,6 +1,6 @@
 var services = {
-		QUERY_PLATFORM_LIST:"/index/queryPlatformList",
-		CHECK_LOGIN:"/user/checkLogin"
+		QUERY_PLATFORM_LIST:"index/queryPlatformList",
+		CHECK_LOGIN:"user/checkLogin"
 };
 
 (function ($) {

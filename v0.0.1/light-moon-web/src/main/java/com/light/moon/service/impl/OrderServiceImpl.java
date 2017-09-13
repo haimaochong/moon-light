@@ -2,9 +2,9 @@ package com.light.moon.service.impl;
 
 import org.springframework.stereotype.Service;
 
-import com.light.moon.dao.InvestDao;
-import com.light.moon.entity.InvestEntity;
-import com.light.moon.service.InvestService;
+import com.light.moon.dao.OrderDao;
+import com.light.moon.entity.OrderEntity;
+import com.light.moon.service.OrderService;
 
 /**
  * 投资记录服务实现类
@@ -13,7 +13,7 @@ import com.light.moon.service.InvestService;
  * 
  */
 @Service
-public class InvestServiceImpl extends AbsBaseService<InvestEntity, InvestDao> implements InvestService {
+public class OrderServiceImpl extends AbsBaseService<OrderEntity, OrderDao> implements OrderService {
 
 	@Override
 	public Integer queryInvestNumByPlatform(Long platformId) {

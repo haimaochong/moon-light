@@ -124,11 +124,6 @@
 		<!-- servlet -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1.0</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
@@ -163,6 +158,21 @@
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.aliyuncs</groupId>
+			<artifactId>sdk-core</artifactId>
+			<version>3.2.2</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/aliyun-java-sdk-core-3.2.2.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>com.aliyuncs</groupId>
+			<artifactId>dysmsapi</artifactId>
+			<version>1.0.0-SANPSHOT</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/aliyun-java-sdk-dysmsapi-1.0.0-SANPSHOT.jar</systemPath>
 		</dependency>
 
 		<!-- commons -->
@@ -334,6 +344,15 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<configuration>
 					<warName>${project.artifactId}</warName>
+					<webResources>
+                            <resource><directory>${project.basedir}/src/main/webapp/WEB-INF/lib</directory>
+                                <targetPath>WEB-INF/lib</targetPath>
+                               <filtering>false</filtering>
+                            <includes>
+                            <include>**/*.jar</include>
+                            </includes>
+                        </resource>
+                    </webResources>
 				</configuration>
 			</plugin>
 

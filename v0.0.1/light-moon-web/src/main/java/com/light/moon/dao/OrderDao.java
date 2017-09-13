@@ -3,7 +3,7 @@ package com.light.moon.dao;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.light.moon.entity.InvestEntity;
+import com.light.moon.entity.OrderEntity;
 
 /**
  * 投资记录Dao
@@ -12,9 +12,9 @@ import com.light.moon.entity.InvestEntity;
  * 
  */
 @Repository
-public interface InvestDao extends BaseDao<InvestEntity> {
+public interface OrderDao extends BaseDao<OrderEntity> {
 
-	@Query(value = "select count(t.id) from InvestEntity t where t.platForm.id = ?1 ")
+	@Query(value = "select count(t.id) from OrderEntity t where t.platForm.id = ?1 ")
 	public Integer queryInvestNumByPlatform(Long platformId);
 
 }

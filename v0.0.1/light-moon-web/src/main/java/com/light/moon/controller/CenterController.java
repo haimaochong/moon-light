@@ -20,11 +20,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.common.collect.Lists;
 import com.light.moon.context.ThreadLocalInfo;
 import com.light.moon.dto.UserDto;
-import com.light.moon.entity.InvestEntity;
+import com.light.moon.entity.OrderEntity;
 import com.light.moon.entity.UserInfoEntity;
 import com.light.moon.searcher.DynamicSpecifications;
 import com.light.moon.searcher.WebSearchFilter;
-import com.light.moon.service.InvestService;
+import com.light.moon.service.OrderService;
 import com.light.moon.service.UserInfoService;
 import com.light.moon.utils.GridUtils;
 import com.light.moon.vo.ResultVO;
@@ -37,7 +37,7 @@ public class CenterController {
 	private UserInfoService userInfoService;
 
 	@Resource
-	private InvestService investService;
+	private OrderService investService;
 
 	@RequestMapping
 	public String index(ModelMap model, HttpServletRequest request) {
@@ -65,20 +65,20 @@ public class CenterController {
 		return ResultVO.suc(userInfoEntity);
 	}
 
-	@RequestMapping(value = "/queryInvestList", method = RequestMethod.POST)
+	@RequestMapping(value = "/queryOrderList", method = RequestMethod.POST)
 	@ResponseBody
-	public String queryInvestList(Integer pageIndex, Integer pageSize) {
+	public String queryOrderList(Integer pageIndex) {
 
 		UserDto userDto = ThreadLocalInfo.getInstance().getUser();
 		if (null == userDto) {
 			return null;
 		}
 
-		Pageable pageable = GridUtils.buildPageable(pageIndex, pageSize, new Sort(Direction.DESC, "id"));
-		Specification<InvestEntity> filter = DynamicSpecifications.bySearchFilter(InvestEntity.class,
+		Pageable pageable = GridUtils.buildPageable(pageIndex, 15, new Sort(Direction.ASC, "status").and(new Sort(Direction.DESC, "id")));
+		Specification<OrderEntity> filter = DynamicSpecifications.bySearchFilter(OrderEntity.class,
 				toFilter(userDto.getUserId()));
 
-		Page<InvestEntity> page = investService.findAll(filter, pageable);
+		Page<OrderEntity> page = investService.findAll(filter, pageable);
 
 		return GridUtils.toJson(page);
 	}

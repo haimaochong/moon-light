@@ -19,7 +19,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.google.common.collect.Maps;
 import com.light.moon.context.ThreadLocalInfo;
 import com.light.moon.dto.UserDto;
-import com.light.moon.exception.ServiceException;
 import com.light.moon.service.BatchApplyService;
 import com.light.moon.vo.ResultVO;
 

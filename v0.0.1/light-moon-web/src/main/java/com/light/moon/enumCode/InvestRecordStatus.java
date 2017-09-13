@@ -10,7 +10,7 @@ public enum InvestRecordStatus {
 	/**
 	 * 返现中
 	 **/
-	returnning(0, "返现中"),
+	returnning(0, "待返现"),
 
 	/**
 	 * 已返现

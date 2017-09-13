@@ -164,14 +164,14 @@
 							<table class="order-table">
 								<thead>
 									<tr>
-										<th style="width:6%"> </th>
-										<th style="width:12%">平台名称</th>
-										<th style="width:15%">注册手机</th>
-										<th style="width:15%">用户名</th>
-										<th style="width:10%">投资金额</th>
-										<th style="width:10%">标的期限</th>
-										<th style="width:15%">投资时间</th>
-										<th style="width:17%">备注(复投等信息)</th>
+										<th style="width:30px"> </th>
+										<th style="width:100px">平台名称</th>
+										<th style="width:120px">注册手机</th>
+										<th style="width:100px">用户名</th>
+										<th style="width:80px">投资金额</th>
+										<th style="width:80px">标的期限</th>
+										<th style="width:100px">投资时间</th>
+										<th>备注(复投等信息)</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -224,28 +224,6 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>1</td>
-										<td>陆金所</td>
-										<td>18059833445</td>
-										<td>li2963298</td>
-										<td>50000</td>
-										<td>3月标</td>
-										<td>2017-09-08</td>
-										<td>已返现</td>
-										<td>复投</td>
-									</tr>
-									<tr>
-										<td>2</td>
-										<td>陆金所</td>
-										<td>18059833445</td>
-										<td>li2963298</td>
-										<td>50000</td>
-										<td>3月标</td>
-										<td>2017-09-08</td>
-										<td>待返现</td>
-										<td>复投</td>
-									</tr>
 								</tbody>
 							</table>
 							<div class="list-page-div">

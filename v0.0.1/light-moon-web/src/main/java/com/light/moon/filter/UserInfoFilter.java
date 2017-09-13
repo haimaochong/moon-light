@@ -85,7 +85,6 @@ public class UserInfoFilter extends OncePerRequestFilter {
 
 		Cookie cookie = new Cookie("JSESSIONID", sessionId);
 		cookie.setPath(request.getContextPath());
-		cookie.setHttpOnly(true);
 		cookie.setMaxAge(30 * 60);
 		response.addCookie(cookie);
 

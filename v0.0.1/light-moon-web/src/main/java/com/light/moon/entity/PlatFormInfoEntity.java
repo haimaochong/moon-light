@@ -52,7 +52,7 @@ public class PlatformInfoEntity extends BaseId implements Serializable {
 
 	private Integer investNum;
 
-	private List<InvestEntity> invests;
+	private List<OrderEntity> invests;
 
 	public String getName() {
 		return name;
@@ -128,11 +128,11 @@ public class PlatformInfoEntity extends BaseId implements Serializable {
 
 	@OneToMany(mappedBy = "platForm", fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JsonIgnore
-	public List<InvestEntity> getInvests() {
+	public List<OrderEntity> getInvests() {
 		return invests;
 	}
 
-	public void setInvests(List<InvestEntity> invests) {
+	public void setInvests(List<OrderEntity> invests) {
 		this.invests = invests;
 	}
 

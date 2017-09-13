@@ -213,12 +213,12 @@
 	position: absolute;
 	width:300px;
 	text-align: center;
-	top:22px;
+	top:20px;
 	left:55px;
 	color:#FF5521;
 	font-size:12px;
 }
 
 .login-warning{
-	top:160px;
+	top:155px;
 }

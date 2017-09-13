@@ -16,12 +16,16 @@
 			<div class="head-menu js-order-center">交单中心</div>
 		</div>
 		<div class="head-btn-div">
-			<div class="login-user-tip hide">
-				<span>您好，</span> <span class="login-user-name">李海洪</span> - <span class="logout-btn">安全退出</span>
-			</div>
-			<div class="no-login-tip">
-				<span>您好，</span> <span class="login-btn js-login">请登录</span> - <span class="logout-btn js-regist">免费注册</span>
-			</div>
+			<c:if test="${!empty loginName}">
+				<div class="login-user-tip">
+					<span>您好，</span> <span class="login-user-name">${loginName}</span> - <span class="logout-btn form-logout-btn">安全退出</span>
+				</div>
+			</c:if>
+			<c:if test="${empty loginName}">
+				<div class="no-login-tip">
+					<span>您好，</span> <span class="login-btn js-login">请登录</span> - <span class="logout-btn js-regist">免费注册</span>
+				</div>
+			</c:if>
 		</div>
 	</div>
 </div>

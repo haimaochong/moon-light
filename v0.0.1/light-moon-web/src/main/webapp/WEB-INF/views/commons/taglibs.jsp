@@ -12,7 +12,7 @@
 <c:set var="vendorsBase" value="${base }/assets/vendors" />
 
 <%
-    String path = request.getContextPath();
+	String path = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
 %>
 <script language="javascript">
     var BASE_PATH = "<%=path%>";
