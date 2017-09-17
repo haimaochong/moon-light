@@ -27,7 +27,9 @@ import com.light.moon.searcher.WebSearchFilter;
 import com.light.moon.service.OrderService;
 import com.light.moon.service.UserInfoService;
 import com.light.moon.utils.GridUtils;
+import com.light.moon.utils.PublicUtils;
 import com.light.moon.vo.ResultVO;
+import com.light.moon.vo.UserInfoVo;
 
 @Controller
 @RequestMapping("/center")
@@ -61,8 +63,11 @@ public class CenterController {
 		if (null == userInfoEntity) {
 			return ResultVO.err("用户不存在！");
 		}
+		
+		UserInfoVo userInfoVo = new UserInfoVo();
+		PublicUtils.CopyBeanToBean(userInfoEntity, userInfoVo);
 
-		return ResultVO.suc(userInfoEntity);
+		return ResultVO.suc(userInfoVo);
 	}
 
 	@RequestMapping(value = "/queryOrderList", method = RequestMethod.POST)

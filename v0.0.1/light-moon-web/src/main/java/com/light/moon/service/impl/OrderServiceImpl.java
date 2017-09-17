@@ -1,5 +1,7 @@
 package com.light.moon.service.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.light.moon.dao.OrderDao;
@@ -18,6 +20,11 @@ public class OrderServiceImpl extends AbsBaseService<OrderEntity, OrderDao> impl
 	@Override
 	public Integer queryInvestNumByPlatform(Long platformId) {
 		return dao.queryInvestNumByPlatform(platformId);
+	}
+	
+	@Override
+	public List<OrderEntity> queryByUserId(Long userId) {
+		return dao.queryByUserId(userId);
 	}
 
 }

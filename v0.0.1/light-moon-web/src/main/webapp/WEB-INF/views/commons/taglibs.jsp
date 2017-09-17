@@ -16,4 +16,5 @@
 %>
 <script language="javascript">
     var BASE_PATH = "<%=path%>";
+    var version = "v0.0.1";
 </script>

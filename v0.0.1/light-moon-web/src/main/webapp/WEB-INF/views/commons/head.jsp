@@ -32,7 +32,7 @@
 
 <div id="regist_div" class="regist_div hide">
 	<div class="regist-content-div form">
-		<div class="warning-div hide">密码格式错误</div>
+		<div class="warning-div hide"></div>
 		<ul>
 			<li>
 				<div class="form-label">手机号码:</div>
@@ -67,7 +67,7 @@
 		<div class="login-logo-div">
 			<img src="${mimeBase}/images/login-logo.png">
 		</div>
-		<div class="warning-div login-warning hide">密码格式错误</div>
+		<div class="warning-div login-warning hide"></div>
 		<div class="login-content-div">
 			<input type="text" placeholder="请输入手机号码"  class="f-text form-login-name mt-50" name="loginName" />
 			<input type="text" placeholder="请输入6-18位密码"  class="f-text form-login-pwd mt-20" name="password" />

@@ -17,10 +17,10 @@
     <div class="center-div">
     	<input id="redirectPage" type="hidden" value="${page}" />
     	<div class="center-menu-div">
-    		<div class="center-menu center-menu-selecttd" data="person-info-panel">我的资料</div>
+    		<div class="center-menu" data="person-info-panel">我的资料</div>
     		<div class="center-menu" data="safe-set-panel">安全设置</div>
     		<div class="center-menu" data="account-panel">账户信息</div>
-    		<div class="center-menu" id="apply-center-panel" data="apply-center-panel">订单管理</div>
+    		<div class="center-menu" data="apply-center-panel">订单管理</div>
     	</div>
     	<div class="center-right">
     		<div class="person-info-panel">
@@ -28,12 +28,12 @@
 	    			<ul>
 	    				<li>
 	    					<div class="form-label">绑定手机</div>
-	    					<div class="form-item f-label-org">18059833445</div>
+	    					<div class="form-item f-label-org js-tel"></div>
 	    				</li>
 	    				<div class="f-clear"></div>
 	    				<li>
 	    					<div class="form-label">昵 称</div>
-	    					<div class="form-item"><input type="text" class="f-text" name="newPwd" /></div>
+	    					<div class="form-item"><input type="text" class="f-text" name="userName" /></div>
 	    				</li>
 	    				<li>
 	    					<div class="form-label">性 别</div>
@@ -47,17 +47,21 @@
 	    					<div class="form-item"><input id="birthday" type="text" class="f-text" name="birthday" /></div>
 	    				</li>
 	    				<li>
-	    					<div class="form-label">所在地</div>
-	    					<div class="form-item"><input type="text" class="f-text" name="confirmPwd" /></div>
+	    					<div class="form-label">邮 箱</div>
+	    					<div class="form-item"><input type="text" class="f-text" name="email" /></div>
 	    				</li>
 	    				<li>
-	    					<div class="form-label">邮 箱</div>
-	    					<div class="form-item"><input type="text" class="f-text" name="confirmPwd" /></div>
+	    					<div class="form-label">Q Q</div>
+	    					<div class="form-item"><input type="text" class="f-text" name="qq" /></div>
+	    				</li>
+	    				<li>
+	    					<div class="form-label">微 信</div>
+	    					<div class="form-item"><input type="text" class="f-text" name="weixin" /></div>
 	    				</li>
 	    				<div class="f-clear"></div>
 	    				<li>
 	    					<div class="form-label">备 注</div>
-	    					<div class="form-item"><textarea class="f-textarea" rows="5" cols="60"></textarea></div>
+	    					<div class="form-item"><textarea class="f-textarea" rows="5" cols="60" name="note"></textarea></div>
 	    				</li>
 	    			</ul>
 	    			<div class="f-clear"></div>
@@ -97,8 +101,8 @@
 	    			<div class="default-account-div">
 	   					<span>默认收款账户 : </span>
 	   					<span>
-	   						<input type="radio" value="0" name="sex" checked="checked" />支付宝
-  							<input type="radio" value="1" name="sex" />Q Q
+	   						<input type="radio" value="PAY_ZFB" name="payType" />支付宝
+  							<input type="radio" value="PAY_QQ" name="payType" />Q Q
 	   					</span>
 	   					<div class="f-clear"></div>
    					</div>
@@ -106,7 +110,7 @@
    						<div class="account-item-top">支付宝</div>
    						<div class="account-item-content">
    							<div class="a-label">支付宝账号</div>
-   							<div class="a-item"><input type="text" class="f-text" name="validNo" /></div>
+   							<div class="a-item"><input type="text" class="f-text" name="accountForZfb" /></div>
    						</div>
    						<div class="f-clear"></div>
    					</div>
@@ -114,7 +118,7 @@
    						<div class="account-item-top">Q Q</div>
    						<div class="account-item-content">
    							<div class="a-label">Q Q号</div>
-   							<div class="a-item"><input type="text" class="f-text" name="validNo" /></div>
+   							<div class="a-item"><input type="text" class="f-text" name="accountForQq" /></div>
    						</div>
    						<div class="f-clear"></div>
    					</div>
@@ -122,16 +126,16 @@
    						<div class="account-item-top">银行账户</div>
    						<div class="account-item-content">
    							<div class="a-label">收款人</div>
-   							<div class="a-item"><input type="text" class="f-text" name="validNo" /></div>
+   							<div class="a-item"><input type="text" class="f-text" name="bankAccount" /></div>
    						</div>
    						<div class="f-clear"></div>
    						<div class="account-item-content">
    							<div class="a-label">银行账号</div>
-   							<div class="a-item"><input type="text" class="f-text" name="validNo" /></div>
+   							<div class="a-item"><input type="text" class="f-text" name="bankAccountCode" /></div>
    						</div>
    						<div class="account-item-content">
    							<div class="a-label">开户行</div>
-   							<div class="a-item"><input type="text" class="f-text" name="validNo" /></div>
+   							<div class="a-item"><input type="text" class="f-text" name="openBank" /></div>
    						</div>
    						<div class="f-clear"></div>
    					</div>
@@ -144,7 +148,7 @@
     		<div class="apply-center-panel hide">
     			<div class="apply-center-top">
     				<div class="apply-center-menus">
-    					<div class="apply-menu apply-menu-selecttd" data="apply-submit">
+    					<div class="apply-menu" data="apply-submit">
     						<div class="apply-menu-btn js-apply-selected">我要交单</div>
     					</div>
     					<div class="apply-menu" data="apply-manage">
@@ -156,10 +160,10 @@
    					<div class="apply-submit">
    						<div class="submit-list">
 							<div class="table-top-tip f-text-left f-left">
-								当前日期 : <fmt:formatDate value="<%=new Date()%>" pattern="yyyy-MM-dd" />
+								收款账户 : <span class="js-account-span"></span><span class="change-account js-change-account"></span>
 							</div>
-							<div class="f-right">
-								<input type="button" class="f-btn f-org-btn list-right-tip js-add-row" value="添加一行"/>
+							<div class="table-top-tip f-text-left f-right mr-20">
+								当前日期 : <fmt:formatDate value="<%=new Date()%>" pattern="yyyy-MM-dd" />
 							</div>
 							<table class="order-table">
 								<thead>
@@ -170,7 +174,7 @@
 										<th style="width:100px">用户名</th>
 										<th style="width:80px">投资金额</th>
 										<th style="width:80px">标的期限</th>
-										<th style="width:100px">投资时间</th>
+										<th style="width:100px">投资日期</th>
 										<th>备注(复投等信息)</th>
 									</tr>
 								</thead>
@@ -178,7 +182,8 @@
 								</tbody>
 							</table>
 							<div class="submit-order-div">
-								<input type="button" class="f-btn f-org-btn submit-order-btn" value="提交"/>
+								<input type="button" class="f-btn f-org-btn submit-order-btn f-right" value="提交"/>
+								<input type="button" class="f-btn submit-order-btn js-add-row f-right" value="添加一行"/>
 							</div>
 							<div class="batch-submit f-text-left">
 								<div class="submit-model-download">
@@ -207,7 +212,7 @@
 								订单列表
 							</div>
 							<div class="f-right">
-								<input type="button" class="f-btn f-org-btn list-right-tip" value="导出Excel表格"/>
+								<input type="button" class="f-btn f-org-btn list-right-tip js-export-order" value="导出Excel表格"/>
 							</div>
 							<table class="order-table">
 								<thead>
@@ -218,7 +223,7 @@
 										<th style="width:15%">用户名</th>
 										<th style="width:10%">投资金额</th>
 										<th style="width:10%">标的期限</th>
-										<th style="width:15%">投资时间</th>
+										<th style="width:15%">投资日期</th>
 										<th style="width:9%">状态</th>
 										<th style="width:8%">备注</th>
 									</tr>
@@ -226,13 +231,7 @@
 								<tbody>
 								</tbody>
 							</table>
-							<div class="list-page-div">
-								<span class="page-div page-menu">首页</span>
-								<span class="page-div page-menu">前一页</span>
-								<span class="page-div">22</span>
-								<span class="page-div page-menu">后一页</span>
-								<span class="page-div page-menu">末页</span>
-							</div>
+							<div id="list-page"></div>
    						</div>
    						<div class="apply-center-notice">
 		    				交单注意事项<br/>
@@ -265,6 +264,48 @@
 			<td><input type="text" class="f-text" placeholder="备注" /></td>
 		</tr>
     </div>
+    
+    <div id="change_account_div" class="submit-order-div hide">
+		<div class="change-content-div form">
+			<ul>
+				<li>
+					<div class="form-label">账户类型:</div>
+					<div class="form-item">
+						<span>
+	   						<input type="radio" value="PAY_ZFB" name="payType" />支付宝
+  							<input type="radio" value="PAY_QQ" name="payType" />Q Q
+	   					</span>
+	   				</div>
+				</li>
+				<li class="js-account-li js-zfb-li hide">
+					<div class="form-label">姓 名:</div>
+					<div class="form-item">
+						<input type="text" placeholder="姓名" class="f-text" name="accountForZfbUser" />
+					</div>
+				</li>
+				<li class="js-account-li js-zfb-li hide">
+					<div class="form-label">支付宝账号:</div>
+					<div class="form-item">
+						<input type="text" placeholder="支付宝账号" class="f-text" name="accountForZfb" />
+					</div>
+				</li>
+				<li class="js-account-li js-qq-li hide">
+					<div class="form-label">Q Q号:</div>
+					<div class="form-item">
+						<input type="text" placeholder="QQ号" class="f-text" name="accountForQq" />
+					</div>
+				</li>
+				<li>
+					<div class="form-label">设置为默认账户:</div>
+					<div class="form-item">
+   						<input type="checkbox" checked="checked" />
+	   				</div>
+				</li>
+			</ul>
+			<div class="f-clear"></div>
+			<input type="button" class="f-btn f-org-btn form-change-btn mb-40" value="确认更改" />
+		</div>
+	</div>
 </body>
 
 <script src="${vendorsBase}/fileupload/jquery.ui.widget.js?version=${version}"></script>

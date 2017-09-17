@@ -45,15 +45,15 @@
 		        var prePageClass = "pageItem";
 		        var nextPageClass = "pageItem";
 		        if(prePage <= 0){
-		            prePageClass = "pageItemDisable";
+		            prePageClass += " pageItemDisable";
 		        }
 		        if(nextPage > pageCount){
-		            nextPageClass = "pageItemDisable";
+		            nextPageClass += " pageItemDisable";
 		        }
 		        
-		        var appendStr = "";
+		        var appendStr = "<div class='page-div'><ul class='page-content'>";
 		        appendStr += "<li class='" + prePageClass + "' page-data='1' onselectstart='return false' page-rel='firstpage'>首页</li>";
-		        appendStr += "<li class='" + prePageClass + "' page-data='" + prePage + "' onselectstart='return false' page-rel='prepage'>&lt;上一页</li>";
+		        appendStr += "<li class='" + prePageClass + "' page-data='" + prePage + "' onselectstart='return false' page-rel='prepage'>&lt;&lt;上一页</li>";
 		        var minPageNumber = 1;
 		        if(currentPage - parseInt(conf.maxShowPage / 2) > 0 && currentPage + parseInt(conf.maxShowPage / 2) <= pageCount){
 		            minPageNumber = currentPage - parseInt(conf.maxShowPage / 2);
@@ -71,18 +71,18 @@
 		            var pageNumber = minPageNumber ++;
 		            var itemPageClass = "pageItem";
 		            if(pageNumber == currentPage){
-		                itemPageClass = "pageItemActive";
+		                itemPageClass += " pageItemActive";
 		            }
 		            appendStr+="<li class='" + itemPageClass + "' page-data='" + pageNumber + "' onselectstart='return false' page-rel='itempage'>" + pageNumber + "</li>";
 		        }
-		        appendStr += "<li class='" + nextPageClass + "' page-data='" + nextPage + "' onselectstart='return false' page-rel='nextpage'>下一页&gt;</li>";
-		        appendStr += "<li class='" + nextPageClass + "' page-data='" + pageCount + "' onselectstart='return false' page-rel='lastpage'>尾页</li>";
+		        appendStr += "<li class='" + nextPageClass + "' page-data='" + nextPage + "' onselectstart='return false' page-rel='nextpage'>下一页&gt;&gt;</li>";
+		        appendStr += "<li class='" + nextPageClass + "' page-data='" + pageCount + "' onselectstart='return false' page-rel='lastpage'>尾页</li></ul></div>";
 		        
 		        return appendStr;
 			},
 			_event:function() {
 				var conf = _page._conf;
-				$(document).off("click", "#"+conf.pageId + ">li[class='pageItem']").on("click", "#"+conf.pageId + ">li[class='pageItem']", function() {
+				$(document).off("click", "#"+conf.pageId + ">div>ul>li[class='pageItem']").on("click", "#"+conf.pageId + ">div>ul>li[class='pageItem']", function() {
 					_page.initPageComponent($(this).attr("page-data"));
 					conf.callBack($(this).attr("page-data"), conf.pageSize);
 				});
@@ -96,4 +96,44 @@
 	
 	window.PubUtils = _pubUtils;
 	
+})(jQuery);
+
+
+/**
+ * 日期工具定义
+ */
+(function($) {
+	Date.prototype.pattern = function(fmt) {         
+	    var o = {         
+	    "M+" : this.getMonth()+1, //月份         
+	    "d+" : this.getDate(), //日         
+	    "h+" : this.getHours()%12 == 0 ? 12 : this.getHours()%12, //小时         
+	    "H+" : this.getHours(), //小时         
+	    "m+" : this.getMinutes(), //分         
+	    "s+" : this.getSeconds(), //秒         
+	    "q+" : Math.floor((this.getMonth()+3)/3), //季度         
+	    "S" : this.getMilliseconds() //毫秒         
+	    };         
+	    var week = {         
+	    "0" : "/u65e5",         
+	    "1" : "/u4e00",         
+	    "2" : "/u4e8c",         
+	    "3" : "/u4e09",         
+	    "4" : "/u56db",         
+	    "5" : "/u4e94",         
+	    "6" : "/u516d"        
+	    };         
+	    if(/(y+)/.test(fmt)){         
+	        fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));         
+	    }         
+	    if(/(E+)/.test(fmt)){         
+	        fmt=fmt.replace(RegExp.$1, ((RegExp.$1.length>1) ? (RegExp.$1.length>2 ? "/u661f/u671f" : "/u5468") : "")+week[this.getDay()+""]);         
+	    }         
+	    for(var k in o){         
+	        if(new RegExp("("+ k +")").test(fmt)){         
+	            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));         
+	        }         
+	    }         
+	    return fmt;         
+	}
 })(jQuery);

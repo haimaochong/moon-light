@@ -1,5 +1,7 @@
 package com.light.moon.service;
 
+import java.util.List;
+
 import com.light.moon.dao.OrderDao;
 import com.light.moon.entity.OrderEntity;
 
@@ -12,5 +14,7 @@ import com.light.moon.entity.OrderEntity;
 public interface OrderService extends BaseService<OrderEntity, OrderDao> {
 
 	public Integer queryInvestNumByPlatform(Long platformId);
+
+	public List<OrderEntity> queryByUserId(Long userId);
 
 }

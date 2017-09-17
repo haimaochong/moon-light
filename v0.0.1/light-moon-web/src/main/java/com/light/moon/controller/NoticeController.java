@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.light.moon.entity.NoticeEntity;
 import com.light.moon.service.NoticeService;
@@ -44,6 +45,14 @@ public class NoticeController {
 		model.addAttribute("nextNotice", nextNotice);
 
 		return "notice/noticeDetail";
+	}
+
+	@RequestMapping("/queryNotice")
+	@ResponseBody
+	public String queryNotice(Integer pageIndex) {
+		Pageable pageable = GridUtils.buildPageable(pageIndex, 10, new Sort(Direction.DESC, "createTime"));
+		Page<NoticeEntity> page = noticeService.findAll(pageable);
+		return GridUtils.toJson(page);
 	}
 
 }

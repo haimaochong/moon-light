@@ -18,8 +18,9 @@
     			if(c.model){
     				zIndex = t.loading() + 1;
     			} else {
-    				zIndex = $.zIndex?++$.zIndex:9000;
+    				zIndex = $.zIndex?$.zIndex:9000;
     			}
+    			$.zIndex = zIndex;;
     	    	t._conf.zIndex = zIndex;
     	    	
     	    	t.show(type, message);
@@ -91,7 +92,7 @@
         	_layout.init("_alert", message, options);
         },
         dialog: function(options) {
-        	_layout.init("_dialog", null, options);
+        	return _layout.init("_dialog", null, options);
         },
         close: function(dialogIndex) {
         	_layout.close(dialogIndex);

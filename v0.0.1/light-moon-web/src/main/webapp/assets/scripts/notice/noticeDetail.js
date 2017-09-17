@@ -10,7 +10,7 @@
         	$("body").on("click", ".other-notice", function() {
         		var noticeId = $(this).attr("data");
         		if(noticeId) {
-        			window.location.href = BASE_PATH + "/notice/detail/" + noticeId;
+        			window.location.href = BASE_PATH + "notice/detail/" + noticeId;
         		}
         	});
         };

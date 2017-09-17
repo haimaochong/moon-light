@@ -85,3 +85,78 @@
 .apply-submit-btn{
 	margin-right: 75px;
 }
+
+.submit-content-div {
+	width: 700px;
+	border-top: 1px solid #DCDCDC;
+	top: 20px;
+	margin: 20px auto 0px;
+	padding-top: 35px;
+}
+
+.submit-content-div .form-label {
+	height:30px !important;
+	line-height: 30px !important;
+	margin-bottom: 0px !important;
+}
+
+.submit-content-div .form-item input[type=text] {
+	height:30px;
+}
+
+.submit-content-div li {
+	float:left;
+	margin:0px 20px;
+}
+
+.account-item{
+	width:510px !important;
+}
+
+.account-code{
+	color:#ADADAD;
+	font-size: 16px;
+}
+
+.change-account{
+	color:#FF5122;
+	margin-left: 15px;
+	cursor: pointer;
+}
+
+.submit-warning-div{
+	position: absolute;
+	width:700px;
+	text-align: center;
+	top:25px;
+	left:55px;
+	color:#FF5521;
+	font-size:14px;
+}
+
+.change-content-div {
+	width: 360px;
+	border-top: 1px solid #DCDCDC;
+	top: 20px;
+	margin: 20px auto 0px;
+	padding-top: 35px;
+}
+
+.change-content-div .form-label {
+	width: 130px !important;
+	height:30px !important;
+	line-height: 30px !important;
+	margin-bottom: 0px !important;
+}
+
+.change-content-div .form-item input[type=text] {
+	height:30px;
+}
+
+.form-change-btn{
+	width: 190px;
+	height: 38px;
+	font-weight:bold;
+	font-size: 20px;
+	letter-spacing:8px;
+}

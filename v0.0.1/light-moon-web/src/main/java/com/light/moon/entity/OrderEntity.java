@@ -12,6 +12,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.light.moon.enumCode.InvestRecordStatus;
 import com.light.moon.enumCode.PayType;
 
@@ -134,6 +135,7 @@ public class OrderEntity extends BaseId implements Serializable {
 		this.account = account;
 	}
 
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	public Date getInvestTime() {
 		return investTime;
 	}

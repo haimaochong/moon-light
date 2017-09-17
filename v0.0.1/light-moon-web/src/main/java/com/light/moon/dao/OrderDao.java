@@ -1,5 +1,7 @@
 package com.light.moon.dao;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -16,5 +18,8 @@ public interface OrderDao extends BaseDao<OrderEntity> {
 
 	@Query(value = "select count(t.id) from OrderEntity t where t.platForm.id = ?1 ")
 	public Integer queryInvestNumByPlatform(Long platformId);
+	
+	@Query(value = "from OrderEntity t where t.user.id = ?1 order by t.status,t.createTime desc ")
+	public List<OrderEntity> queryByUserId(Long userId);
 
 }

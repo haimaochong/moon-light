@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.light.moon.context.ThreadLocalInfo;
 import com.light.moon.context.UserContext;
 import com.light.moon.dto.RegistUserDto;
+import com.light.moon.dto.UserDto;
 import com.light.moon.entity.UserInfoEntity;
 import com.light.moon.service.UserInfoService;
 import com.light.moon.vo.ResultVO;
@@ -78,7 +79,13 @@ public class UserController {
 	@ResponseBody
 	public ResultVO checkLogin() {
 		Boolean isLogin = userContext.checkLogin(threadLocalInfo.getSessionId());
-		return ResultVO.suc(isLogin);
+		if(!isLogin) {
+			return ResultVO.err("用户未登录");
+		}
+		
+		UserDto user = threadLocalInfo.getUser();
+		UserInfoEntity userInfo = userInfoService.findOne(user.getUserId());
+		return ResultVO.suc(userInfo);
 	}
 
 }

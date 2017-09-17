@@ -15,7 +15,7 @@ public enum PayType {
 	/**
 	 * 微信
 	 **/
-	PAY_WX(1, "微信");
+	PAY_QQ(1, "QQ");
 
 	PayType(int code, String text) {
 		this.code = code;

@@ -60,6 +60,54 @@ input[type=button]:active {
 	margin-left: 40px;
 }
 
+.ml-45 {
+	margin-left: 45px;
+}
+
+.ml-50 {
+	margin-left: 50px;
+}
+
+.mr-5 {
+	margin-right: 5px;
+}
+
+.mr-10 {
+	margin-right: 10px;
+}
+
+.mr-15 {
+	margin-right: 15px;
+}
+
+.mr-20 {
+	margin-right: 20px;
+}
+
+.mr-25 {
+	margin-right: 25px;
+}
+
+.mr-30 {
+	margin-right: 30px;
+}
+
+.mr-35 {
+	margin-right: 35px;
+}
+
+.mr-40 {
+	margin-right: 40px;
+}
+
+.mr-45 {
+	margin-right: 45px;
+}
+
+.mr-50 {
+	margin-right: 50px;
+}
+
 .mt-5 {
 	margin-top: 5px;
 }
@@ -130,6 +178,14 @@ input[type=button]:active {
 
 .mb-40 {
 	margin-bottom: 40px;
+}
+
+.mb-45 {
+	margin-bottom: 45px;
+}
+
+.mb-50 {
+	margin-bottom: 50px;
 }
 
 .f-left {
@@ -277,4 +333,57 @@ input[type=button]:active {
 	width: 180px;
 	margin-bottom: 20px;
 	text-align: left;
+}
+
+.tr-odd {
+	background-color: white;
+}
+
+.tr-even {
+	background-color: #E5F3FF;
+}
+
+.tr-selected {
+	background-color: #CBCBCB;
+}
+
+.page-div{
+	width: 100%;
+	padding-top: 10px;
+	padding-bottom: 30px;
+}
+
+.page-content{
+	width: 480px;
+	height:40px;
+	line-height:40px;
+	margin:auto;
+	text-align: center;
+}
+
+.pageItem{
+	float:left;
+	list-style:none;
+	margin: 0px 15px;
+	cursor: pointer;
+	font-size:16px;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	color: #ADADAD;
+}
+
+.pageItem:HOVER{
+	color: #F15122;
+}
+
+.pageItemDisable{
+	color: #DDDDDD;
+}
+
+.pageItemDisable:HOVER{
+	color: #DDDDDD;
+}
+
+.pageItemActive{
+	color: #F15122;
 }

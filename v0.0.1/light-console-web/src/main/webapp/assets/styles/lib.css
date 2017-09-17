@@ -1,0 +1,272 @@
+body {
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
+	background-color: #EEEEEE;
+	color: #333333;
+	font-family: "微软雅黑";
+}
+
+img {
+	cursor: pointer;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+}
+
+input[type=button] {
+	cursor: pointer;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	outline: none;
+}
+
+input[type=button]:active {
+	box-shadow: inset 0 0 2px 2px #ccc;
+}
+
+.hide {
+	display: none;
+}
+
+.ml-5 {
+	margin-left: 5px;
+}
+
+.ml-10 {
+	margin-left: 10px;
+}
+
+.ml-15 {
+	margin-left: 15px;
+}
+
+.ml-20 {
+	margin-left: 20px;
+}
+
+.ml-25 {
+	margin-left: 25px;
+}
+
+.ml-30 {
+	margin-left: 30px;
+}
+
+.ml-35 {
+	margin-left: 35px;
+}
+
+.ml-40 {
+	margin-left: 40px;
+}
+
+.mt-5 {
+	margin-top: 5px;
+}
+
+.mt-10 {
+	margin-top: 10px;
+}
+
+.mt-15 {
+	margin-top: 15px;
+}
+
+.mt-20 {
+	margin-top: 20px;
+}
+
+.mt-25 {
+	margin-top: 25px;
+}
+
+.mt-30 {
+	margin-top: 30px;
+}
+
+.mt-35 {
+	margin-top: 35px;
+}
+
+.mt-40 {
+	margin-top: 40px;
+}
+
+.mb-5 {
+	margin-bottom: 5px;
+}
+
+.mb-10 {
+	margin-bottom: 10px;
+}
+
+.mb-15 {
+	margin-bottom: 15px;
+}
+
+.mb-20 {
+	margin-bottom: 20px;
+}
+
+.mb-25 {
+	margin-bottom: 25px;
+}
+
+.mb-30 {
+	margin-bottom: 30px;
+}
+
+.mb-35 {
+	margin-bottom: 35px;
+}
+
+.mb-40 {
+	margin-bottom: 40px;
+}
+
+.f-left {
+	float: left;
+}
+
+.f-right {
+	float: right;
+}
+
+.f-text-left {
+	text-align: left;
+}
+
+.f-text-right {
+	text-align: right;
+}
+
+.f-clear {
+	clear: both;
+}
+
+.f-nocopy {
+	-moz-user-select: none;
+	-webkit-user-select: none;
+}
+
+.f-btn {
+	height: 30px;
+	font-size: 17px;
+	color: #515151;
+	padding: 5px 22px;
+	background-color: white;
+	border: 1px solid #E5E5E5;
+	border-radius: 5px;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	cursor: pointer;
+}
+
+.f-org-btn {
+	background: -moz-linear-gradient(top, #F15120 0%, #D84410 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #F15120),
+		color-stop(100%, #D84410) );
+	background: -webkit-linear-gradient(top, #F15120 0%, #D84410 100%);
+	background: -o-linear-gradient(top, #F15120 0%, #D84410 100%);
+	background: -ms-linear-gradient(top, #F15120 0%, #D84410 100%);
+	background: linear-gradient(to bottom, #F15120 0%, #D84410 100%);
+	color: white;
+}
+
+.f-label-org {
+	color: #F15120;
+}
+
+.f-text {
+	height: 28px;
+	width: 100%;
+	font-size: 17px;
+	color: #515151;
+	border: 1px solid #CBCBCB;
+	border-radius: 5px;
+	padding: 1px 8px;
+	font-size: 14px;
+}
+
+.f-textarea {
+	font-size: 17px;
+	color: #515151;
+	border: 1px solid #CBCBCB;
+	border-radius: 5px;
+	padding: 5px 8px;
+	font-size: 14px;
+}
+
+.f-valid-text {
+	height: 28px;
+	line-height: 32px;
+	width: 70px;
+	font-size: 17px;
+	color: #515151;
+	border: 1px solid #CBCBCB;
+	border-right: 0px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	padding: 1px 8px;
+	font-size: 14px;
+}
+
+.f-valid-btn {
+	height: 32px;
+	line-height: 32px;
+	width: 90px;
+	font-size: 12px;
+	color: white;
+	border: 0px;
+	margin-left: -5px;
+	background-color: #FF5522;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	cursor: pointer;
+}
+
+.page-index {
+	width: 800px;
+	height: 30px;
+	line-height: 30px;
+	padding-right:190px;
+	margin: auto;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding-left: 10px;
+	text-align: left;
+	background-color: white;
+	color: #ADADAD;
+	font-size: 14px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.form ul {
+	margin: auto;
+}
+
+.form ul li {
+	list-style-type: none;
+}
+
+.form ul li .form-label {
+	float: left;
+	height: 30px;
+	line-height: 30px;
+	width: 120px;
+	text-align: right;
+	padding-right: 15px;
+	clear: both;
+	margin-bottom: 20px;
+}
+
+.form ul li .form-item {
+	float: left;
+	height: 30px;
+	line-height: 30px;
+	width: 180px;
+	margin-bottom: 20px;
+	text-align: left;
+}

@@ -19,16 +19,16 @@ var services = {
         }, initEvent = function () {
             $("body").on("click", ".show-more-btn", function() {
             	var platformId = $(this).parents(".platform-item").attr("data");
-            	window.location.href = BASE_PATH + "/apply?platformInfoId="+platformId;
+            	window.location.href = BASE_PATH + "apply?platformInfoId="+platformId;
             });
             
             $(".js-notice").click(function() {
             	var noticeId = $(this).attr("data");
-        		window.open(BASE_PATH + "/notice/detail/" + noticeId);
+        		window.open(BASE_PATH + "notice/detail/" + noticeId);
             });
             
             $(".more-notice-tip").click(function() {
-            	window.open(BASE_PATH + "/notice");
+            	window.open(BASE_PATH + "notice");
             });
             
             $(".show-more-tip").click(function() {
