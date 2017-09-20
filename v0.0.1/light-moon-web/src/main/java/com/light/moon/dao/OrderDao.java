@@ -1,5 +1,6 @@
 package com.light.moon.dao;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
@@ -21,5 +22,8 @@ public interface OrderDao extends BaseDao<OrderEntity> {
 	
 	@Query(value = "from OrderEntity t where t.user.id = ?1 order by t.status,t.createTime desc ")
 	public List<OrderEntity> queryByUserId(Long userId);
-
+	
+	@Query(value = "select sum(t.amount) from OrderEntity t ")
+	public BigDecimal queryAllAmount();
+	
 }

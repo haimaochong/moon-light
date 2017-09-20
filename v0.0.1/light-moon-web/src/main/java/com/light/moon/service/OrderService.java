@@ -1,5 +1,6 @@
 package com.light.moon.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import com.light.moon.dao.OrderDao;
@@ -16,5 +17,7 @@ public interface OrderService extends BaseService<OrderEntity, OrderDao> {
 	public Integer queryInvestNumByPlatform(Long platformId);
 
 	public List<OrderEntity> queryByUserId(Long userId);
+	
+	public BigDecimal queryAllAmount();
 
 }

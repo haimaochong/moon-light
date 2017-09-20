@@ -33,7 +33,7 @@
 	    				<div class="f-clear"></div>
 	    				<li>
 	    					<div class="form-label">昵 称</div>
-	    					<div class="form-item"><input type="text" class="f-text" name="userName" /></div>
+	    					<div class="form-item"><input type="text" placeholder="昵称" class="f-text" name="userName" /></div>
 	    				</li>
 	    				<li>
 	    					<div class="form-label">性 别</div>
@@ -48,25 +48,25 @@
 	    				</li>
 	    				<li>
 	    					<div class="form-label">邮 箱</div>
-	    					<div class="form-item"><input type="text" class="f-text" name="email" /></div>
+	    					<div class="form-item"><input type="text" placeholder="邮箱" class="f-text" name="email" /></div>
 	    				</li>
 	    				<li>
 	    					<div class="form-label">Q Q</div>
-	    					<div class="form-item"><input type="text" class="f-text" name="qq" /></div>
+	    					<div class="form-item"><input type="text" placeholder="QQ号" class="f-text" name="qq" maxlength="12" /></div>
 	    				</li>
 	    				<li>
 	    					<div class="form-label">微 信</div>
-	    					<div class="form-item"><input type="text" class="f-text" name="weixin" /></div>
+	    					<div class="form-item"><input type="text" placeholder="微信号" class="f-text" name="weixin" maxlength="30" /></div>
 	    				</li>
 	    				<div class="f-clear"></div>
 	    				<li>
 	    					<div class="form-label">备 注</div>
-	    					<div class="form-item"><textarea class="f-textarea" rows="5" cols="60" name="note"></textarea></div>
+	    					<div class="form-item"><textarea placeholder="什么都没有留下~" class="f-textarea" rows="5" cols="60" name="note" maxlength="500"></textarea></div>
 	    				</li>
 	    			</ul>
 	    			<div class="f-clear"></div>
 	    			<div class="submit-person-div">
-						<input type="button" class="f-btn f-org-btn" value="确认修改"/>
+						<input type="button" class="f-btn f-org-btn js-updateUserInfo-btn" value="确认修改"/>
 					</div>
     			</div>
     		</div>
@@ -75,24 +75,24 @@
 	    			<ul>
 	    				<li>
 	    					<div class="form-label">新密码</div>
-	    					<div class="form-item"><input type="text" class="f-text" name="newPwd" /></div>
+	    					<div class="form-item"><input type="text" placeholder="请输入新密码" class="f-text" name="newPwd" /></div>
 	    				</li>
 	    				<li>
 	    					<div class="form-label">确认密码</div>
-	    					<div class="form-item"><input type="text" class="f-text" name="confirmPwd" /></div>
+	    					<div class="form-item"><input type="text" placeholder="请再次输入密码" class="f-text" name="confirmPwd" /></div>
 	    				</li>
 	    				<li>
 	    					<div class="form-label">手机验证码</div>
 	    					<div class="form-item">
-	    						<input type="text" class="f-valid-text" name="validNo" />
+	    						<input type="text" placeholder="验证码" class="f-valid-text" name="validNo" />
 	    						<input type="button" class="f-valid-btn" value="获取验证码" />
-	    						<div class="valid-notice hide">验证码已发送至您的手机 <font style="color:red">180****3445</font>，请注意查收</div>
+	    						<div class="valid-notice hide">验证码已发送至您的手机 <font style="color:red" class="js-phone"></font>，请注意查收</div>
 	    					</div>
 	    				</li>
 	    			</ul>
 	    			<div class="f-clear"></div>
 	    			<div class="submit-psw-div">
-						<input type="button" class="f-btn f-org-btn" value="确认修改"/>
+						<input type="button" class="f-btn f-org-btn js-resetPwd-btn" value="确认修改"/>
 					</div>
     			</div>
     		</div>
@@ -109,8 +109,12 @@
    					<div class="account-item">
    						<div class="account-item-top">支付宝</div>
    						<div class="account-item-content">
-   							<div class="a-label">支付宝账号</div>
-   							<div class="a-item"><input type="text" class="f-text" name="accountForZfb" /></div>
+   							<div class="a-label">收款人姓名</div>
+   							<div class="a-item"><input type="text" placeholder="收款人姓名" class="f-text" name="accountForZfbUser" maxlength="32" /></div>
+   						</div>
+   						<div class="account-item-content">
+   							<div class="a-label">账号</div>
+   							<div class="a-item"><input type="text" placeholder="支付宝账号" class="f-text" name="accountForZfb" maxlength="32" /></div>
    						</div>
    						<div class="f-clear"></div>
    					</div>
@@ -118,7 +122,7 @@
    						<div class="account-item-top">Q Q</div>
    						<div class="account-item-content">
    							<div class="a-label">Q Q号</div>
-   							<div class="a-item"><input type="text" class="f-text" name="accountForQq" /></div>
+   							<div class="a-item"><input type="text" placeholder="收款QQ号" class="f-text" name="accountForQq" maxlength="12" /></div>
    						</div>
    						<div class="f-clear"></div>
    					</div>
@@ -126,22 +130,22 @@
    						<div class="account-item-top">银行账户</div>
    						<div class="account-item-content">
    							<div class="a-label">收款人</div>
-   							<div class="a-item"><input type="text" class="f-text" name="bankAccount" /></div>
+   							<div class="a-item"><input type="text" placeholder="银行帐户名（收款人）" class="f-text" name="bankAccount" maxlength="50" /></div>
    						</div>
    						<div class="f-clear"></div>
    						<div class="account-item-content">
    							<div class="a-label">银行账号</div>
-   							<div class="a-item"><input type="text" class="f-text" name="bankAccountCode" /></div>
+   							<div class="a-item"><input type="text" placeholder="银行账号" class="f-text" name="bankAccountCode" maxlength="20" /></div>
    						</div>
    						<div class="account-item-content">
    							<div class="a-label">开户行</div>
-   							<div class="a-item"><input type="text" class="f-text" name="openBank" /></div>
+   							<div class="a-item"><input type="text" placeholder="开户行" class="f-text" name="openBank" maxlength="50" /></div>
    						</div>
    						<div class="f-clear"></div>
    					</div>
 	    			<div class="f-clear"></div>
 	    			<div class="submit-psw-div">
-						<input type="button" class="f-btn f-org-btn" value="确认修改"/>
+						<input type="button" class="f-btn f-org-btn js-updateAccount-btn" value="确认修改"/>
 					</div>
     			</div>
     		</div>

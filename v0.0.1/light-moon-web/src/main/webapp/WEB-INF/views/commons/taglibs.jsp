@@ -2,7 +2,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <c:set var="base"
-	value="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}" />
+	value="${pageContext.request.scheme}://${pageContext.request.serverName}${pageContext.request.contextPath}" />
 
 <%--版本变量 --%>
 <c:set var="version" value="v0.0.1"></c:set>
@@ -12,7 +12,7 @@
 <c:set var="vendorsBase" value="${base }/assets/vendors" />
 
 <%
-	String path = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+	String path = request.getScheme() + "://" + request.getServerName() + request.getContextPath() + "/";
 %>
 <script language="javascript">
     var BASE_PATH = "<%=path%>";

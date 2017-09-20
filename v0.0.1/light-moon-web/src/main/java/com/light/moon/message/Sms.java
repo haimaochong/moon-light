@@ -2,8 +2,12 @@ package com.light.moon.message;
 
 public interface Sms {
 
-	public void sendRegistAuthCode(String phoneNum, Integer authCode);
+	public void sendRegistAuthCode(Long phoneNum);
 
-	public void sendResetPwdAuthCode(String phoneNum, Integer authCode);
+	public void sendResetPwdAuthCode(Long phoneNum);
+
+	public boolean validRegistAuthCode(Long phoneNum, String validCode);
+
+	public boolean validResetPwdAuthCode(Long phoneNum, String validCode);
 
 }

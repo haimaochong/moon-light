@@ -36,7 +36,7 @@
 		<ul>
 			<li>
 				<div class="form-label">手机号码:</div>
-				<div class="form-item"><input type="text" placeholder="请输入手机号码" class="f-text" name="login-name" /></div>
+				<div class="form-item"><input type="text" placeholder="请输入手机号码" class="f-text" name="loginName" /></div>
 			</li>
 			<li>
 				<div class="form-label">登录密码:</div>
@@ -49,9 +49,9 @@
 			<li>
 				<div class="form-label">手机验证码:</div>
 				<div class="form-item">
-					<input type="text" class="f-valid-text form-valid-text" name="validNo" />
-					<input type="button" class="f-valid-btn form-valid-btn" value="获取验证码" />
-					<div class="valid-notice hide">验证码已发送至您的手机 <font style="color:red">180****3445</font>，请注意查收</div>
+					<input type="text" class="f-valid-text form-valid-text" name="validCode" />
+					<input type="button" class="f-valid-btn form-valid-btn js-regist-valid-btn" value="获取验证码" />
+					<div class="valid-notice hide">验证码已发送至您的手机 <font style="color:red" class="js-regist-phone"></font>，请注意查收</div>
 				</div>
 			</li>
 		</ul>
@@ -70,7 +70,7 @@
 		<div class="warning-div login-warning hide"></div>
 		<div class="login-content-div">
 			<input type="text" placeholder="请输入手机号码"  class="f-text form-login-name mt-50" name="loginName" />
-			<input type="text" placeholder="请输入6-18位密码"  class="f-text form-login-pwd mt-20" name="password" />
+			<input type="password" placeholder="请输入6-18位密码"  class="f-text form-login-pwd mt-20" name="password" />
 			<input type="button" class="f-btn f-org-btn form-login-btn mt-50" value="登录" />
 		</div>
 	</div>

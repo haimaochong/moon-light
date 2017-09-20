@@ -345,9 +345,10 @@
 }
 
 .show-more-tip{
-	width:600px;
+	width:1000px;
 	font-size: 16px;
 	letter-spacing:10px;
+	cursor: pointer;
 }
 
 .show-more-tip:HOVER{

@@ -3,6 +3,7 @@ package com.light.moon.service.impl;
 import java.util.Date;
 
 import javax.annotation.Resource;
+import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
@@ -11,9 +12,11 @@ import com.light.moon.context.UserContext;
 import com.light.moon.dao.UserInfoDao;
 import com.light.moon.dto.RegistUserDto;
 import com.light.moon.dto.UserDto;
+import com.light.moon.dto.UserInfoDto;
 import com.light.moon.entity.UserInfoEntity;
 import com.light.moon.enumCode.OperatorType;
 import com.light.moon.enumCode.PayType;
+import com.light.moon.exception.ServiceException;
 import com.light.moon.service.OperatorLogService;
 import com.light.moon.service.UserInfoService;
 import com.light.moon.utils.IdUtils;
@@ -76,6 +79,53 @@ public class UserInfoServiceImpl extends AbsBaseService<UserInfoEntity, UserInfo
 
 		operatorLogService.addOperatorLog(user.getLoginName(), OperatorType.USER_LOGIN, "用户登录,IP:"
 				+ threadLocalInfo.getRequest().getRemoteAddr());
+	}
+	
+	@Override
+	public void saveNormalInfo(Long userId, UserInfoDto userInfo) {
+		UserInfoEntity userEntity = dao.findOne(userId);
+		if(null == userEntity) {
+			throw new ServiceException("用户不存在或登录超时，请刷新重试！");
+		}
+		
+		userEntity.setUserName(userInfo.getUserName());
+		userEntity.setSex(userInfo.getSex());
+		userEntity.setBirthday(userInfo.getBirthday());
+		userEntity.setEmail(userInfo.getEmail());
+		userEntity.setQq(userInfo.getQq());
+		userEntity.setWeixin(userInfo.getWeixin());
+		userEntity.setNote(userInfo.getNote());
+		
+		dao.save(userEntity);
+	}
+
+	@Override
+	@Transactional
+	public void resetPwd(Long userId, String newPwd) {
+		dao.resetPwd(userId, newPwd);
+	}
+	
+	@Override
+	public void saveAccountInfo(Long userId, UserInfoDto userInfo) {
+		UserInfoEntity userEntity = dao.findOne(userId);
+		if(null == userEntity) {
+			throw new ServiceException("用户不存在或登录超时，请刷新重试！");
+		}
+		
+		userEntity.setPayType(userInfo.getPayType());
+		userEntity.setAccountForZfbUser(userInfo.getAccountForZfbUser());
+		userEntity.setAccountForZfb(userInfo.getAccountForZfb());
+		userEntity.setAccountForQq(userInfo.getAccountForQq());
+		userEntity.setBankAccount(userInfo.getBankAccount());
+		userEntity.setBankAccountCode(userInfo.getBankAccountCode());
+		userEntity.setOpenBank(userInfo.getOpenBank());
+		
+		dao.save(userEntity);
+	}
+
+	@Override
+	public UserInfoEntity queryUser(String loginName) {
+		return dao.queryUser(loginName);
 	}
 
 }

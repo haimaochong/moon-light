@@ -16,11 +16,11 @@
     	<div class="show-amount-div">
     		<div class="show-all-amount">
     			<div class="show-amount-label f-nocopy">总成交金额（元）</div>
-    			<div class="show-amount-item">￥2,208,999,450</div>
+    			<div class="show-amount-item">￥${allAmount}</div>
     		</div>
     		<div class="show-all-amount all-amount-bottom">
     			<div class="show-amount-label f-nocopy">总返利金额（元）</div>
-    			<div class="show-amount-item">￥2,208,999,450</div>
+    			<div class="show-amount-item">￥0</div>
     		</div>
     	</div>
     	<div class="show-others">
@@ -38,11 +38,11 @@
     		<div class="relate-div others-bottom">
     			<div class="rela-left">
 					<img class="f-left" src="${mimeBase}/images/rela-logo1.gif">
-					<div class="rela-item f-left">在线客服QQ<br/>292071141</div>
+					<div class="rela-item f-left">在线客服QQ<br/>XXXXXXXXX</div>
     			</div>
     			<div class="rela-right">
 					<img class="f-left" src="${mimeBase}/images/rela-logo2.gif">
-					<div class="rela-item f-left">官方Q群<br/>292071141</div>
+					<div class="rela-item f-left">官方Q群<br/>XXXXXXX</div>
     			</div>
     		</div>
     	</div>
@@ -71,7 +71,7 @@
     		</div>
     		<div class="show-more-div">
     			<input type="button" class="f-btn show-more-tip hide" value="显示更多"/>
-    			<div class="no-more-tip hide">没有更多~</div>
+    			<div class="no-more-tip f-nocopy hide">没有更多~</div>
     		</div>
     	</div>
     </div>
@@ -81,26 +81,10 @@
 			<div class="platform-item-top">
 				<div class="platform-name">%platformName%</div>
 				<div class="platform-keyword-list f-nocopy">
-					<div class="platform-keyword">网贷之家第一名</div>
-					<div class="platform-keyword">纽交所IPO上市系</div>
-					<div class="platform-keyword">兴业银行存管</div>
+					%keyword%
 				</div>
-				<div class="platform-type-list">
-					<div class="platform-type-item f-nocopy">
-						<div class="platform-type-left"></div>
-						<div class="platform-type">推荐标</div>
-						<div class="platform-type-right"></div>
-					</div>
-					<div class="platform-type-item f-nocopy">
-						<div class="platform-type-left"></div>
-						<div class="platform-type">明星标</div>
-						<div class="platform-type-right"></div>
-					</div>
-					<div class="platform-type-item f-nocopy">
-						<div class="platform-type-left"></div>
-						<div class="platform-type">可复投</div>
-						<div class="platform-type-right"></div>
-					</div>
+				<div class="platform-type-list f-nocopy">
+					%platformGroup%
 				</div>
 			</div>
 			<div class="platform-item-content">

@@ -1,6 +1,9 @@
 var services = {
 		QUERY_ORDER_LIST:"center/queryOrderList",
-		QUERY_USER_INFO:"center/queryUserInfo"
+		QUERY_USER_INFO:"center/queryUserInfo",
+		SAVE_NORMAL_INFO:"center/saveNormalInfo",
+		SAVE_ACCOUNT_INFO:"center/saveAccountInfo",
+		UPDATE_PASSWORD:"center/updatePassword"
 };
 
 (function ($) {
@@ -24,7 +27,45 @@ var services = {
         	});
 		},
 		initEvent = function() {
-			
+			$("body").off("click", ".js-updateUserInfo-btn").on("click", ".js-updateUserInfo-btn", function() {
+				$(this).attr("disabled", true);
+				var params = getParams();
+				if(!validParams(params)) {
+					return;
+				}
+				
+				$.post(BASE_PATH + services.SAVE_NORMAL_INFO, params, function (result) {
+					$(".js-resetPwd-btn").attr("disabled", false);
+					
+	                if (result) {
+	                	if(result.code == 0) {
+	                		$.layout.alert("修改成功");
+	                	} else {
+	                		$.layout.alert(result.msg);
+	                	}
+	                } else {
+	                	$.layout.alert("网络连接超时！");
+	                }
+	            });
+			});
+		},
+		getParams = function() {
+			var params = {};
+			params["userName"] = $(".person-info-div input[name=userName]").val().trim();
+			params["sex"] = $(".person-info-div input[name=sex]:checked").val();
+			params["birthday"] = $(".person-info-div input[name=birthday]").val();
+			params["email"] = $(".person-info-div input[name=email]").val();
+			params["qq"] = $(".person-info-div input[name=qq]").val();
+			params["weixin"] = $(".person-info-div input[name=weixin]").val();
+			params["note"] = $(".person-info-div textarea[name=note]").val();
+			return params;
+		},
+		validParams = function(params) {
+			if(params["userName"] && params["userName"].length > 16) {
+				$.layout.alert("昵称最大长度为16位");
+				return false;
+			}
+			return true;
 		},
 		initData = function() {
     		$(".js-tel").text(_userInfo.loginName);
@@ -50,7 +91,83 @@ var services = {
 			initEvent();
 		},
 		initEvent = function() {
+			$("body").off("click", ".f-valid-btn").on("click", ".f-valid-btn", sendValidCode);
 			
+			$("body").off("click", ".js-resetPwd-btn").on("click", ".js-resetPwd-btn", function() {
+				$(".js-resetPwd-btn").attr("disabled", true);
+				var newPwd = $(".safe-set-div input[name=newPwd]").val().trim();
+            	var confirmPwd = $(".safe-set-div input[name=confirmPwd]").val().trim();
+            	var validNo = $(".safe-set-div input[name=validNo]").val().trim();
+            	
+            	if(!newPwd) {
+            		$.layout.alert("请输入新密码");
+            		return;
+            	}
+            	
+            	if(!/^[0-9a-zA-Z\~!@#$%^&*\_]{6,18}$/.test(newPwd)) {
+            		showWarning(dialog, "密码只能以字母、数字、下划线和特殊字符组合<br/>且长度为6~18位");
+            	    return false;
+            	}
+            	
+            	if(newPwd != confirmPwd) {
+            		$.layout.alert("两次密码不一致");
+            		return;
+            	}
+            	
+            	if(!validNo) {
+            		$.layout.alert("请输入验证码");
+            		return;
+            	}
+            	
+				$.post(BASE_PATH + services.UPDATE_PASSWORD, {newPwd:$.md5(newPwd), validCode:validNo}, function (result) {
+	                if (result) {
+	                	if(result.code == 0) {
+	                		$.layout.alert("密码修改成功，3秒后自动退出登录，请使用新密码登录！");
+	                		setTimeout(function() {
+	                			$("..form-logout-btn").click();
+	                		}, 3000);
+	                	} else {
+	                		$(".js-resetPwd-btn").attr("disabled", false);
+	                		$.layout.alert(result.msg);
+	                	}
+	                } else {
+	                	$(".js-resetPwd-btn").attr("disabled", false);
+	                	$.layout.alert("网络连接超时！");
+	                }
+	            });
+			});
+		},
+		sendValidCode = function() {
+			$(".f-valid-btn").attr("disabled", true);
+			
+			$.post(BASE_PATH + head_services.SEND_VALID_CODE, {phoneNum:_userInfo.loginName,type:"updatePwd"}, function (result) {
+                if (result) {
+                	if(result.code == 0) {
+                		var phone = PubUtils.encryPhone(_userInfo.loginName);
+                		$(".js-phone").text(phone);
+                		$(".valid-notice").show();
+                		
+                		var time = 10;
+                		var i = setInterval(function() {
+                			$(".f-valid-btn").val("倒计时("+(time--)+")");
+                			if(time < 0) {
+                				$(".f-valid-btn").attr("disabled", false);
+                				$(".f-valid-btn").val("获取验证码");
+                				$(".valid-notice").hide();
+                				clearInterval(i);
+                			}
+                		}, 1000);
+                	} else {
+                		$.layout.alert("验证码发送失败！，请重试");
+                		$(".f-valid-btn").attr("disabled", false);
+        				$(".f-valid-btn").val("获取验证码");
+        				$(".valid-notice").hide();
+                	}
+                } else {
+                	$(".f-valid-btn").attr("disabled", false);
+                	$.layout.alert("网络连接超时！");
+                }
+            });
 		};
 		
 		return {
@@ -67,10 +184,64 @@ var services = {
 			initData();
 		},
 		initEvent = function() {
+			$("body").off("click", ".js-updateAccount-btn").on("click", ".js-updateAccount-btn", function() {
+				$(this).attr("disabled", true);
+				var params = getParams();
+				if(!validParams(params)) {
+					return;
+				}
+				
+				$.post(BASE_PATH + services.SAVE_ACCOUNT_INFO, params, function (result) {
+					$(".js-updateAccount-btn").attr("disabled", false);
+					
+	                if (result) {
+	                	if(result.code == 0) {
+	                		$.layout.alert("修改成功");
+	                	} else {
+	                		$.layout.alert(result.msg);
+	                	}
+	                } else {
+	                	$.layout.alert("网络连接超时！");
+	                }
+	            });
+			});
+		},
+		getParams = function() {
+			var params = {};
+			params["payType"] = $(".account-div input[name=payType]:checked").val();
+			params["accountForZfbUser"] = $(".account-div input[name=accountForZfbUser]").val().trim();
+			params["accountForZfb"] = $(".account-div input[name=accountForZfb]").val();
+			params["accountForQq"] = $(".account-div input[name=accountForQq]").val();
+			params["bankAccount"] = $(".account-div input[name=bankAccount]").val();
+			params["bankAccountCode"] = $(".account-div input[name=bankAccountCode]").val();
+			params["openBank"] = $(".account-div input[name=openBank]").val();
+			return params;
+		},
+		validParams = function(params) {
+			if(params["payType"] == "PAY_ZFB") {
+				if(!params["accountForZfbUser"]) {
+					$.layout.alert("支付宝收款人姓名不能为空");
+					return false;
+				}
+				if(!params["accountForZfb"]) {
+					$.layout.alert("支付宝账号不能为空");
+					return false;
+				}
+			} else if(params["payType"] == "PAY_QQ") {
+				if(!params["accountForQq"]) {
+					$.layout.alert("收款QQ账号不能为空");
+					return false;
+				}
+			} else {
+				$.layout.alert("默认收款方式错误，请重新选择");
+				return false;
+			}
 			
+			return true;
 		},
 		initData = function() {
     		$(".account-panel").find("input[name=payType][value="+_userInfo.payType.name+"]").attr("checked", true);
+    		$(".account-panel").find("input[name=accountForZfbUser]").val(_userInfo.accountForZfbUser);
     		$(".account-panel").find("input[name=accountForZfb]").val(_userInfo.accountForZfb);
     		$(".account-panel").find("input[name=accountForQq]").val(_userInfo.accountForQq);
     		$(".account-panel").find("input[name=bankAccount]").val(_userInfo.bankAccount);

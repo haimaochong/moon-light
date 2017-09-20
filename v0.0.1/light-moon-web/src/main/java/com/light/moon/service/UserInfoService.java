@@ -2,6 +2,7 @@ package com.light.moon.service;
 
 import com.light.moon.dao.UserInfoDao;
 import com.light.moon.dto.RegistUserDto;
+import com.light.moon.dto.UserInfoDto;
 import com.light.moon.entity.UserInfoEntity;
 
 /**
@@ -17,5 +18,13 @@ public interface UserInfoService extends BaseService<UserInfoEntity, UserInfoDao
 	public String registUser(RegistUserDto user);
 
 	public void login(UserInfoEntity user);
+
+	public void saveNormalInfo(Long userId, UserInfoDto userInfo);
+	
+	public void resetPwd(Long userId, String newPwd);
+
+	public void saveAccountInfo(Long userId, UserInfoDto userInfo);
+	
+	public UserInfoEntity queryUser(String loginName);
 	
 }

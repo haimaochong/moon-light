@@ -12,6 +12,8 @@ public class RegistUserDto {
 
 	private String password;
 
+	private String validCode;
+
 	public String getLoginName() {
 		return loginName;
 	}
@@ -26,6 +28,14 @@ public class RegistUserDto {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getValidCode() {
+		return validCode;
+	}
+
+	public void setValidCode(String validCode) {
+		this.validCode = validCode;
 	}
 
 }

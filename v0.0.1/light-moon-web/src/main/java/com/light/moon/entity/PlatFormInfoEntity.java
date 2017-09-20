@@ -1,21 +1,25 @@
 package com.light.moon.entity;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.light.moon.enumCode.ReturnMoneyType;
+import com.google.common.collect.Lists;
+import com.light.moon.enumCode.PlatformGroup;
 
 /**
  * 平台实体
@@ -34,25 +38,55 @@ public class PlatformInfoEntity extends BaseId implements Serializable {
 	 */
 	private static final long serialVersionUID = -1003470562125788029L;
 
+	/**
+	 * 平台名称
+	 */
 	private String name;
 
+	/**
+	 * 平台Logo
+	 */
 	private String icoUrl;
 
-	private Date createTime;
+	/**
+	 * 期限
+	 */
+	private Integer deadline;
 
-	private BigDecimal minInvestAccount;
+	/**
+	 * 期限类型
+	 */
+	private String deadlineType;
 
-	private BigDecimal maxInvestAccount;
+	/**
+	 * 平台分组
+	 */
+	private String _platformGroups;
 
-	private Boolean isInvestCycle;
+	/**
+	 * 关键字
+	 */
+	private String _keywords;
 
-	private ReturnMoneyType returnMoneyType;
+	/**
+	 * 返现说明
+	 */
+	private String returnMoneyDesc;
 
+	/**
+	 * 投资说明
+	 */
 	private String desc;
 
-	private Integer investNum;
+	/**
+	 * 创建时间
+	 */
+	private Date createTime;
 
-	private List<OrderEntity> invests;
+	/**
+	 * 投资记录
+	 */
+	private List<OrderEntity> orders;
 
 	public String getName() {
 		return name;
@@ -70,44 +104,103 @@ public class PlatformInfoEntity extends BaseId implements Serializable {
 		this.icoUrl = icoUrl;
 	}
 
-	public Date getCreateTime() {
-		return createTime;
+	public Integer getDeadline() {
+		return deadline;
 	}
 
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
+	public void setDeadline(Integer deadline) {
+		this.deadline = deadline;
 	}
 
-	public BigDecimal getMinInvestAccount() {
-		return minInvestAccount;
+	public String getDeadlineType() {
+		return deadlineType;
 	}
 
-	public void setMinInvestAccount(BigDecimal minInvestAccount) {
-		this.minInvestAccount = minInvestAccount;
+	public void setDeadlineType(String deadlineType) {
+		this.deadlineType = deadlineType;
 	}
 
-	public BigDecimal getMaxInvestAccount() {
-		return maxInvestAccount;
+	@Deprecated
+	@Column(name = "PLATFORM_GROUPS")
+	public String get_platformGroups() {
+		return _platformGroups;
 	}
 
-	public void setMaxInvestAccount(BigDecimal maxInvestAccount) {
-		this.maxInvestAccount = maxInvestAccount;
+	@Deprecated
+	public void set_platformGroups(String _platformGroups) {
+		this._platformGroups = _platformGroups;
 	}
 
-	public Boolean getIsInvestCycle() {
-		return isInvestCycle;
+	@Transient
+	public List<PlatformGroup> getPlatformGroups() {
+		List<PlatformGroup> platformGroupList = Lists.newArrayList();
+		if (StringUtils.isBlank(_platformGroups)) {
+			return platformGroupList;
+		}
+
+		PlatformGroup[] platformGroupArr = PlatformGroup.values();
+		String[] platformGroupStrs = _platformGroups.split(",");
+		for (String platformGroupStr : platformGroupStrs) {
+			platformGroupList.add(platformGroupArr[Integer.valueOf(platformGroupStr)]);
+		}
+
+		return platformGroupList;
 	}
 
-	public void setIsInvestCycle(Boolean isInvestCycle) {
-		this.isInvestCycle = isInvestCycle;
+	public void setPlatformGroups(List<PlatformGroup> platformGroups) {
+		if (CollectionUtils.isEmpty(platformGroups)) {
+			_platformGroups = null;
+			return;
+		}
+
+		// 只取前三个
+		if (platformGroups.size() > 3) {
+			platformGroups = platformGroups.subList(0, 3);
+		}
+
+		StringBuilder platformGroupStr = new StringBuilder();
+		for (PlatformGroup platformGroup : platformGroups) {
+			platformGroupStr.append(platformGroup.getCode()).append(",");
+		}
+		_platformGroups = platformGroupStr.substring(0, platformGroupStr.length() - 1);
 	}
 
-	public ReturnMoneyType getReturnMoneyType() {
-		return returnMoneyType;
+	@Deprecated
+	@Column(name = "KEYWORDS")
+	public String get_keywords() {
+		return _keywords;
 	}
 
-	public void setReturnMoneyType(ReturnMoneyType returnMoneyType) {
-		this.returnMoneyType = returnMoneyType;
+	@Deprecated
+	public void set_keywords(String _keywords) {
+		this._keywords = _keywords;
+	}
+
+	@Transient
+	public List<String> getKeywords() {
+		List<String> keywords = Lists.newArrayList();
+		if (StringUtils.isBlank(_keywords)) {
+			return keywords;
+		}
+
+		return Lists.newArrayList(_keywords.split(","));
+	}
+
+	public void setKeywords(List<String> keywords) {
+		// 只取前三个
+		if (keywords.size() > 3) {
+			keywords = keywords.subList(0, 3);
+		}
+
+		_keywords = StringUtils.join(keywords, ",");
+	}
+
+	public String getReturnMoneyDesc() {
+		return returnMoneyDesc;
+	}
+
+	public void setReturnMoneyDesc(String returnMoneyDesc) {
+		this.returnMoneyDesc = returnMoneyDesc;
 	}
 
 	public String getDesc() {
@@ -118,22 +211,22 @@ public class PlatformInfoEntity extends BaseId implements Serializable {
 		this.desc = desc;
 	}
 
-	public Integer getInvestNum() {
-		return investNum;
+	public Date getCreateTime() {
+		return createTime;
 	}
 
-	public void setInvestNum(Integer investNum) {
-		this.investNum = investNum;
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
 	}
 
 	@OneToMany(mappedBy = "platForm", fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JsonIgnore
-	public List<OrderEntity> getInvests() {
-		return invests;
+	public List<OrderEntity> getOrders() {
+		return orders;
 	}
 
-	public void setInvests(List<OrderEntity> invests) {
-		this.invests = invests;
+	public void setOrders(List<OrderEntity> orders) {
+		this.orders = orders;
 	}
 
 }

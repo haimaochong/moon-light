@@ -5,19 +5,24 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum ReturnMoneyType {
+public enum PlatformGroup {
 
 	/**
-	 * 立返
+	 * 推荐标
 	 **/
-	TODAY(0, "立返"),
+	RECOMMENDATION(0, "推荐标"),
 
 	/**
-	 * 次返
+	 * 明星标
 	 **/
-	NEXT_DAY(1, "次返");
+	STARS(1, "明星标"),
 
-	ReturnMoneyType(int code, String text) {
+	/**
+	 * 可复投
+	 **/
+	REDELIVERY(2, "可复投");
+
+	PlatformGroup(int code, String text) {
 		this.code = code;
 		this.text = text;
 	}
@@ -46,7 +51,7 @@ public enum ReturnMoneyType {
 	}
 
 	public static String getText(int code) {
-		for (ReturnMoneyType c : ReturnMoneyType.values()) {
+		for (PlatformGroup c : PlatformGroup.values()) {
 			if (c.code == code) {
 				return c.text;
 			}
@@ -54,8 +59,8 @@ public enum ReturnMoneyType {
 		return null;
 	}
 
-	public static ReturnMoneyType forCode(int code) {
-		for (ReturnMoneyType c : ReturnMoneyType.values()) {
+	public static PlatformGroup forCode(int code) {
+		for (PlatformGroup c : PlatformGroup.values()) {
 			if (c.code == code) {
 				return c;
 			}

@@ -13,6 +13,8 @@ import com.light.moon.context.UserContext;
 import com.light.moon.dto.RegistUserDto;
 import com.light.moon.dto.UserDto;
 import com.light.moon.entity.UserInfoEntity;
+import com.light.moon.exception.ServiceException;
+import com.light.moon.message.Sms;
 import com.light.moon.service.UserInfoService;
 import com.light.moon.vo.ResultVO;
 
@@ -22,6 +24,9 @@ public class UserController {
 
 	@Resource
 	private UserInfoService userInfoService;
+	
+	@Resource
+	private Sms sms;
 
 	private UserContext userContext = UserContext.getInstance();
 
@@ -50,6 +55,19 @@ public class UserController {
 
 		if (StringUtils.isBlank(user.getPassword())) {
 			return ResultVO.err("登录密码不可为空");
+		}
+		
+		UserInfoEntity oldUser = userInfoService.queryUser(user.getLoginName());
+		if(null != oldUser) {
+			return ResultVO.err("该手机号码已注册");
+		}
+		
+		try {
+			sms.validRegistAuthCode(Long.valueOf(user.getLoginName()), user.getValidCode());
+		} catch (ServiceException e) {
+			return ResultVO.err(e.getMessage());
+		} catch (Exception e) {
+			return ResultVO.err("系统异常");
 		}
 
 		return ResultVO.ok();

@@ -52,7 +52,7 @@ var services = {
                 	var contentHtml = "";
                     var trHtml = $("#platform-item-model").html();
                     for (var i = 0; i < rows.length; i++) {
-                        contentHtml += trHtml.replace("%platformName%", rows[i].name).replace("%icoUrl%", rows[i].icoUrl).replace("%platformId%", rows[i].id);
+                        contentHtml += trHtml.replace("%platformName%", rows[i].name).replace("%icoUrl%", rows[i].icoUrl).replace("%platformId%", rows[i].id).replace("%platformGroup%", getPlatformGroupHTML(rows[i].platformGroups)).replace("%keyword%", getKeywordHTML(rows[i].keywords));
                     }
                     if(currentPageIndex == 1) {
                     	$(".platform-list").html(contentHtml);
@@ -70,6 +70,28 @@ var services = {
                     }
                 }
             });
+        },
+        getPlatformGroupHTML = function(platformGroups) {
+        	var html = "";
+        	if(platformGroups && platformGroups.length && platformGroups.length > 0) {
+        		for(var i=0; i<platformGroups.length; i++) {
+        			html += '<div class="platform-type-item">'
+        				+ '<div class="platform-type-left"></div>'
+        				+ '<div class="platform-type">'+platformGroups[i].text+'</div>'
+        				+ '<div class="platform-type-right"></div>'
+        				+ '</div>';
+        		}
+        	}
+        	return html;
+        },
+        getKeywordHTML = function(keywords) {
+        	var html = "";
+        	if(keywords && keywords.length && keywords.length > 0) {
+        		for(var i=0; i<keywords.length; i++) {
+        			html += '<div class="platform-keyword">'+keywords[i]+'</div>';
+        		}
+        	}
+        	return html;
         };
 
         return {

@@ -1,5 +1,6 @@
 package com.light.moon.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -21,7 +22,9 @@ import com.light.moon.entity.PlatformInfoEntity;
 import com.light.moon.searcher.DynamicSpecifications;
 import com.light.moon.searcher.WebSearchFilter;
 import com.light.moon.service.NoticeService;
+import com.light.moon.service.OrderService;
 import com.light.moon.service.PlatformInfoService;
+import com.light.moon.utils.FormatUtils;
 import com.light.moon.utils.GridUtils;
 
 @Controller
@@ -33,11 +36,18 @@ public class IndexController {
 
 	@Resource
 	private NoticeService noticeService;
+	
+	@Resource
+	private OrderService orderService;
 
 	@RequestMapping
 	public String index(ModelMap model) {
 		List<NoticeEntity> noticeList = noticeService.queryNewNotice();
 		model.put("noticeList", noticeList);
+		
+		BigDecimal allAmount = orderService.queryAllAmount();
+		model.put("allAmount", FormatUtils.formatMoney(allAmount));
+		
 		return "index/index";
 	}
 
@@ -46,7 +56,7 @@ public class IndexController {
 	public String queryPlatformList(String platformName, Integer pageIndex) {
 
 		Pageable pageable = GridUtils.buildPageable(pageIndex, 15,
-				new Sort(Direction.DESC, "investNum").and(new Sort(Direction.ASC, "id")));
+				new Sort(Direction.DESC, "createTime").and(new Sort(Direction.ASC, "id")));
 		Specification<PlatformInfoEntity> filter = DynamicSpecifications.bySearchFilter(PlatformInfoEntity.class,
 				toFilter(platformName));
 

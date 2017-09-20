@@ -1,25 +1,18 @@
-package com.light.moon.vo;
+package com.light.moon.dto;
 
-import java.io.Serializable;
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.light.moon.enumCode.PayType;
 
 /**
- * 前端的数据VO
+ * 用户信息
  * 
  * @author lihh
  * 
  */
-public class UserInfoVo implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -9056890496318752805L;
-
-	private String loginName;
+public class UserInfoDto {
 
 	private String userName;
 
@@ -27,15 +20,15 @@ public class UserInfoVo implements Serializable {
 
 	private Date birthday;
 
-	private String tel;
-
 	private String email;
 
 	private String qq;
-	
+
 	private String weixin;
 
 	private String note;
+
+	private PayType payType;
 
 	private String accountForZfbUser;
 
@@ -48,16 +41,6 @@ public class UserInfoVo implements Serializable {
 	private String bankAccountCode;
 
 	private String openBank;
-
-	private PayType payType;
-
-	public String getLoginName() {
-		return loginName;
-	}
-
-	public void setLoginName(String loginName) {
-		this.loginName = loginName;
-	}
 
 	public String getUserName() {
 		return userName;
@@ -75,15 +58,7 @@ public class UserInfoVo implements Serializable {
 		this.sex = sex;
 	}
 
-	public String getTel() {
-		return tel;
-	}
-
-	public void setTel(String tel) {
-		this.tel = tel;
-	}
-
-	@JsonFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern="yyyy-MM-dd") 
 	public Date getBirthday() {
 		return birthday;
 	}
@@ -116,20 +91,20 @@ public class UserInfoVo implements Serializable {
 		this.weixin = weixin;
 	}
 
-	public String getAccountForQq() {
-		return accountForQq;
-	}
-
-	public void setAccountForQq(String accountForQq) {
-		this.accountForQq = accountForQq;
-	}
-
 	public String getNote() {
 		return note;
 	}
 
 	public void setNote(String note) {
 		this.note = note;
+	}
+
+	public PayType getPayType() {
+		return payType;
+	}
+
+	public void setPayType(PayType payType) {
+		this.payType = payType;
 	}
 
 	public String getAccountForZfbUser() {
@@ -146,6 +121,14 @@ public class UserInfoVo implements Serializable {
 
 	public void setAccountForZfb(String accountForZfb) {
 		this.accountForZfb = accountForZfb;
+	}
+
+	public String getAccountForQq() {
+		return accountForQq;
+	}
+
+	public void setAccountForQq(String accountForQq) {
+		this.accountForQq = accountForQq;
 	}
 
 	public String getBankAccount() {
@@ -170,14 +153,6 @@ public class UserInfoVo implements Serializable {
 
 	public void setOpenBank(String openBank) {
 		this.openBank = openBank;
-	}
-
-	public PayType getPayType() {
-		return payType;
-	}
-
-	public void setPayType(PayType payType) {
-		this.payType = payType;
 	}
 
 }

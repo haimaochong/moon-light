@@ -87,10 +87,14 @@
 					conf.callBack($(this).attr("page-data"), conf.pageSize);
 				});
 			}
+		},
+		_encryPhone = function(phone) {
+			return phone.substring(0, 3) + "****" + phone.substring(7, 11);
 		};
 
 		return {
-			"initPage" : _page.init
+			"initPage" : _page.init,
+			"encryPhone" : _encryPhone
 		};
 	})();
 	
